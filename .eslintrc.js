@@ -25,5 +25,6 @@ module.exports = {
     'react/jsx-one-expression-per-line': 'off',
     'no-shadow': 'off',
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'react/function-component-definition': ['error', { namedComponents: 'arrow-function' }],
   },
 };
