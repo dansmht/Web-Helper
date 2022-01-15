@@ -1,7 +1,21 @@
-const HomePage = () => (
-  <div>
-    Home Page
-  </div>
-);
+import { Code } from '../../components/Code/Code';
+import { ComponentWithCode } from '../../components/Code/ComponentWithCode';
+import { exampleCode } from '../../constants/example-code.const';
+import { useCodeHighlight } from '../../hooks/useCodeHighlight';
+
+const HomePage = () => {
+  useCodeHighlight();
+
+  return (
+    <div>
+      Home Page
+      <ComponentWithCode>
+        <Code>
+          {exampleCode}
+        </Code>
+      </ComponentWithCode>
+    </div>
+  );
+};
 
 export default HomePage;
