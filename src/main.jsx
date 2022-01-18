@@ -5,9 +5,7 @@ import javascript from 'highlight.js/lib/languages/javascript';
 
 import App from './App';
 
-import './index.css';
-// TODO: implement own styles for both themes
-import 'highlight.js/styles/stackoverflow-dark.css';
+import './assets/styles/index.css';
 
 hljs.registerLanguage('javascript', javascript);
 

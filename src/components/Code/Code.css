@@ -1,8 +1,0 @@
-/* TODO: after creating own themes move this styles to Component */
-.preformatted {
-  @apply p-3;
-}
-
-.preformatted .code {
-  @apply px-1 py-px;
-}
