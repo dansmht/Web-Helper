@@ -1,9 +1,9 @@
-import HomePage from './pages/HomePage/HomePage';
+import { ThemeSwitcher } from './components/ThemeSwitcher/ThemeSwitcher';
+import { HomePage } from './pages/HomePage';
 
-const App = () => (
-  <div>
+export const App = () => (
+  <div className="h-full bg-primary text-primary">
+    <ThemeSwitcher />
     <HomePage />
   </div>
 );
-
-export default App;

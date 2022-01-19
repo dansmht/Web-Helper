@@ -50,6 +50,8 @@ module.exports = {
       backgroundColor,
       textColor,
       borderColor,
+      ringColor: borderColor,
+      boxShadowColor: borderColor,
     },
   },
   plugins: [],

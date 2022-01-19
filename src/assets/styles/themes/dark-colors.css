@@ -1,43 +1,41 @@
-@layer base {
-  .dark {
-    /* text colors */
-    --primary-text-color: 209 213 218;
-    --secondary-text-color: 209 213 218;
-    --secondary-text-title-color: 225 228 232;
+.dark {
+  /* text colors */
+  --primary-text-color: 209 213 218;
+  --secondary-text-color: 209 213 218;
+  --secondary-text-title-color: 225 228 232;
 
-    --btn-primary-text-color: 220 255 228;
-    --btn-secondary-text-color: 255 255 255;
+  --btn-primary-text-color: 220 255 228;
+  --btn-secondary-text-color: 255 255 255;
 
-    --link-text-color: 121 184 255;
-    --link-text-active-color: 200 225 255;
+  --link-text-color: 121 184 255;
+  --link-text-active-color: 200 225 255;
 
-    --input-text-color: 225 228 232;
-    --input-placeholder-color: 149 157 165;
+  --input-text-color: 225 228 232;
+  --input-placeholder-color: 149 157 165;
 
-    /* background colors */
-    --primary-bg-color: 36 41 46;
-    --secondary-bg-color: 31 36 40;
+  /* background colors */
+  --primary-bg-color: 36 41 46;
+  --secondary-bg-color: 31 36 40;
 
-    --btn-primary-bg-color: 23 111 44;
-    --btn-primary-hover-bg-color: 34 134 58;
-    --btn-secondary-bg-color: 68 77 86;
-    --btn-secondary-hover-bg-color: 149 157 165;
+  --btn-primary-bg-color: 23 111 44;
+  --btn-primary-hover-bg-color: 34 134 58;
+  --btn-secondary-bg-color: 68 77 86;
+  --btn-secondary-hover-bg-color: 149 157 165;
 
-    --input-bg-color: 47 54 61;
+  --input-bg-color: 47 54 61;
 
-    /* border colors */
-    --border-color: 27 31 35;
-    --border-active-color: 36 41 46;
+  /* border colors */
+  --border-color: 27 31 35;
+  --border-active-color: 36 41 46;
 
-    /* all colors */
-    --error-color: 234 74 90;
-    --warning-color: 255 171 112;
-    --info-color: 121 184 255;
+  /* all colors */
+  --error-color: 234 74 90;
+  --warning-color: 255 171 112;
+  --info-color: 121 184 255;
 
-    /* rest colors */
-    --scrollbar-shadow-color: 0 0 0;       /*        opacity 0.53 */
-    --scrollbar-slider-color: 106 115 125; /*        opacity 0.20 */
-                                           /* hover  opacity 0.27 */
-                                           /* active opacity 0.53 */
-  }
+  /* rest colors */
+  --scrollbar-shadow-color: 0 0 0;       /*        opacity 0.53 */
+  --scrollbar-slider-color: 106 115 125; /*        opacity 0.20 */
+                                         /* hover  opacity 0.27 */
+                                         /* active opacity 0.53 */
 }
