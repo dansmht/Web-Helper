@@ -18,14 +18,12 @@
 
       if (theme && ['dark', 'light'].includes(theme)) {
         htmlClassList.add(theme);
-      }
-
-      if (!theme) {
-        if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-          htmlClassList.add('light');
-        } else {
-          htmlClassList.add('dark');
-        }
+      } else {
+        htmlClassList.add(
+          matchMedia('(prefers-color-scheme: light)').matches
+            ? 'light'
+            : 'dark'
+        );
       }
     } catch (_) { }
   </script>
