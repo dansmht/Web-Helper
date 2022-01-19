@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom';
 import hljs from 'highlight.js/lib/core';
 import javascript from 'highlight.js/lib/languages/javascript';
 
-import App from './App';
+import { App } from './App';
 
-import './index.css';
-// TODO: implement own styles for both themes
-import 'highlight.js/styles/stackoverflow-dark.css';
+import { listenPreferredColorScheme } from './utils/theme';
+
+import './assets/styles/index.css';
+
+listenPreferredColorScheme();
 
 hljs.registerLanguage('javascript', javascript);
 

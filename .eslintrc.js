@@ -27,5 +27,6 @@ module.exports = {
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'react/function-component-definition': ['error', { namedComponents: 'arrow-function' }],
     'import/prefer-default-export': 'off',
+    'padded-blocks': 'off',
   },
 };

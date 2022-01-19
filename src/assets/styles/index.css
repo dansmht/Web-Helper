@@ -1,0 +1,9 @@
+@import url('tailwind.css');
+
+@import url('themes');
+
+html,
+body,
+#root {
+  height: 100%;
+}

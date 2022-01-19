@@ -4,6 +4,30 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
+
+  <style>
+    .dark {
+      color-scheme: dark;
+    }
+  </style>
+
+  <script>
+    try {
+      const theme = localStorage.getItem('theme');
+      const htmlClassList = document.documentElement.classList;
+
+      if (theme && ['dark', 'light'].includes(theme)) {
+        htmlClassList.add(theme);
+      } else {
+        htmlClassList.add(
+          matchMedia('(prefers-color-scheme: light)').matches
+            ? 'light'
+            : 'dark'
+        );
+      }
+    } catch (_) { }
+  </script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vite App</title>
 </head>

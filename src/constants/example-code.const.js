@@ -11,6 +11,20 @@ import 'highlight.js/styles/github.css';
 hljs.registerLanguage('javascript', javascript);
 console.log('hljs', hljs);
 
+const hey = {
+  test: 'lol',
+};
+
+// Test comment
+/* Test comment 2 */
+// JSON
+const hey = /[Lol+]/;
+
+const arr = ['1', 2, {}];
+arr = arr.map(({ el }) => {
+  return el;
+});
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
