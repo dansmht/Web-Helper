@@ -42,7 +42,7 @@ const borderColor = {
 
 module.exports = {
   content: [
-    './src/**/*.jsx',
+    './src/**/*.tsx',
   ],
   theme: {
     extend: {

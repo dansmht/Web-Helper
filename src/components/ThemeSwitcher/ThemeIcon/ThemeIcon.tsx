@@ -1,7 +1,12 @@
-import { memo } from 'react';
+import { FC, memo } from 'react';
 
-// eslint-disable-next-line react/prop-types
-export const ThemeIcon = memo(({ theme }) => {
+import { ColorScheme } from '../../../utils/types/theme.types';
+
+type ThemeIconProps = {
+  theme: ColorScheme | null
+}
+
+export const ThemeIcon : FC<ThemeIconProps> = memo(({ theme }) => {
   let d;
 
   switch (theme) {

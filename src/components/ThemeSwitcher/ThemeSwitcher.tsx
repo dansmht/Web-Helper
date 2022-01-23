@@ -1,24 +1,25 @@
 import { useState } from 'react';
 
-import { ThemeIcon } from './ThemeIcon';
+import { ThemeIcon } from './ThemeIcon/ThemeIcon';
 
-import { existingColorSchemes, htmlClassList } from '../../constants/theme';
+import { ColorScheme, ColorSchemeOrNull } from '../../utils/types/theme.types';
+import { colorSchemes, htmlClassList } from '../../utils/constants/theme.constants';
 
 export const ThemeSwitcher = () => {
-  const [theme, setTheme] = useState(() => localStorage.getItem('theme'));
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') as ColorSchemeOrNull);
 
-  const switchTheme = (newTheme) => () => {
+  const switchTheme = (newTheme: ColorSchemeOrNull) => () => {
     if (newTheme === theme) return;
 
     if (newTheme) {
       // if newTheme is not system preferred
       localStorage.setItem('theme', newTheme);
-      htmlClassList.remove(...existingColorSchemes);
+      htmlClassList.remove(...colorSchemes);
       htmlClassList.add(newTheme);
     } else {
       // if newTheme is system preferred
       localStorage.removeItem('theme');
-      htmlClassList.remove(theme);
+      htmlClassList.remove(theme as ColorScheme);
 
       if (!window.matchMedia('(prefers-color-scheme: light)').matches) {
         htmlClassList.add('dark');
