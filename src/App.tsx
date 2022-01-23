@@ -1,8 +1,8 @@
+import { HomePage } from './pages/Home/HomePage/HomePage';
 import { ThemeSwitcher } from './components/ThemeSwitcher/ThemeSwitcher';
-import { HomePage } from './pages/HomePage';
 
 export const App = () => (
-  <div className="h-full bg-primary text-primary">
+  <div className="h-full bg-primary text-primary transition duration-500">
     <ThemeSwitcher />
     <HomePage />
   </div>
