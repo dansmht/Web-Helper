@@ -1,6 +1,6 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-export const Code: FC<{}> = ({ children }) => (
+export const Code: FC = ({ children }) => (
   <pre>
     <code className="code transition duration-500">
       {children}

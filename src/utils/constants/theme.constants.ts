@@ -1,4 +1,4 @@
-import { ColorScheme } from "../types/theme.types";
+import { ColorScheme } from '../types/theme.types';
 
 export const htmlClassList = document.documentElement.classList;
 

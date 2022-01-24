@@ -40,6 +40,11 @@ const borderColor = {
   'active-color': withOpacityValue('--border-active-color'),
 };
 
+const fill = {
+  background: withOpacityValue('--primary-bg-color'),
+  text: withOpacityValue('--secondary-text-title-color'),
+};
+
 module.exports = {
   content: [
     './src/**/*.tsx',
@@ -52,6 +57,7 @@ module.exports = {
       borderColor,
       ringColor: borderColor,
       boxShadowColor: borderColor,
+      fill,
     },
   },
   plugins: [],
