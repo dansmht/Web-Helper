@@ -31,5 +31,9 @@ module.exports = {
     'react/function-component-definition': ['error', { namedComponents: 'arrow-function' }],
     'import/prefer-default-export': 'off',
     'padded-blocks': 'off',
+    'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+    'import/extensions': 'off',
+    'import/no-unresolved': 'off',
+    'react/prop-types': 'off',
   },
 };
