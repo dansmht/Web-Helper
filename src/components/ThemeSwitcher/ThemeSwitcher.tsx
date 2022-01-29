@@ -7,7 +7,11 @@ import { ColorScheme, ColorSchemeOrNull } from '../../utils/types/theme.types';
 import { IconType } from '../../utils/types/icon.types';
 import { colorSchemes, htmlClassList } from '../../utils/constants/theme.constants';
 
-export const ThemeSwitcher: FC = () => {
+interface ThemeSwitcherProps {
+  title?: string
+}
+
+export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ title }) => {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') as ColorSchemeOrNull);
 
   const getThemeIcon = (theme: ColorSchemeOrNull): IconType => {
@@ -40,7 +44,7 @@ export const ThemeSwitcher: FC = () => {
   };
 
   return (
-    <Popup icon={getThemeIcon(theme)}>
+    <Popup icon={getThemeIcon(theme)} title={title}>
       {({ close }) => (
         <>
           <PopupItem

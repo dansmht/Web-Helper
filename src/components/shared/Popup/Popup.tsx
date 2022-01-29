@@ -18,14 +18,20 @@ interface PopupProps {
   children: (({ close }: { close: () => void }) => ReactNode) | ReactNode,
   closableOnClickOutside?: boolean,
   icon?: IconType,
+  buttonIconPlacement?: 'left' | 'right',
   size?: 'small' | 'medium' | 'large' | 'auto',
+  buttonText?: string,
+  title?: string,
 }
 
 export const Popup: FC<PopupProps> = ({
   children,
   closableOnClickOutside = true,
   icon = null,
+  buttonIconPlacement,
   size = 'medium',
+  buttonText,
+  title,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -86,7 +92,15 @@ export const Popup: FC<PopupProps> = ({
   return (
     <div ref={popupRef} className="flex relative max-w-[10rem]">
 
-      <PopupButton isOpen={isOpen} open={open} close={close} icon={icon || undefined} />
+      <PopupButton
+        isOpen={isOpen}
+        open={open}
+        close={close}
+        text={buttonText}
+        icon={icon || undefined}
+        iconPlacement={buttonIconPlacement}
+        title={title}
+      />
 
       {isOpen && (
         <ul className={popupDropdownClasses}>

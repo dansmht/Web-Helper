@@ -8,26 +8,29 @@ interface PopupButtonProps {
   isOpen: boolean,
   open: () => void,
   close: () => void,
-  title?: string,
+  text?: string,
   icon?: IconType,
   iconPlacement?: 'left' | 'right',
+  title?: string,
 }
 
 export const PopupButton: FC<PopupButtonProps> = memo(({
   isOpen,
   open,
   close,
-  title,
+  text,
   icon,
   iconPlacement = 'left',
+  title,
 }) => (
   <button
     type="button"
     className="flex items-center gap-2"
     onClick={isOpen ? close : open}
+    title={title}
   >
     {icon && iconPlacement === 'left' && <Icon variant={icon} />}
-    {title}
+    {text}
     {icon && iconPlacement === 'right' && <Icon variant={icon} />}
   </button>
 ));

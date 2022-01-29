@@ -1,3 +1,3 @@
 type ThemeIcon = 'system' | 'moon' | 'sun';
 
-export type IconType = ThemeIcon | 'font-size' | 'bookmark';
+export type IconType = 'logo' | ThemeIcon | 'font-size' | 'bookmark';
