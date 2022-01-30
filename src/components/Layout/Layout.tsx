@@ -6,9 +6,7 @@ import { Header } from '../Header/Header';
 
 export const Layout: FC = () => (
   <>
-    <Container>
-      <Header />
-    </Container>
+    <Header />
 
     <Container>
       <Outlet />

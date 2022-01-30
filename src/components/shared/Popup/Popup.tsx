@@ -3,7 +3,6 @@ import {
   ReactNode,
   useCallback,
   useEffect,
-  useMemo,
   useRef,
   useState,
 } from 'react';
@@ -37,12 +36,12 @@ export const Popup: FC<PopupProps> = ({
 
   const popupRef = useRef<HTMLDivElement>(null);
 
-  const popupDropdownClasses = useMemo(() => cn('absolute py-1 top-full mt-4 right-2 z-20 bg-secondary text-secondary rounded-lg ring-2 ring-color shadow-lg shadow-color', {
+  const popupDropdownClasses = cn('absolute py-1 top-full mt-6 right-0 z-20 bg-secondary text-secondary rounded-lg border-2 border-color shadow-md shadow-color', {
     'w-16': size === 'small',
     'w-36': size === 'medium',
     'w-48': size === 'large',
     'w-auto': size === 'auto',
-  }), [size]);
+  });
 
   const open = useCallback(() => {
     setIsOpen(true);
