@@ -1,12 +1,24 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 
-import { ThemeIcon } from './ThemeIcon/ThemeIcon';
+import { Popup } from '../shared/Popup/Popup';
+import { PopupItem } from '../shared/Popup/PopupItem';
 
 import { ColorScheme, ColorSchemeOrNull } from '../../utils/types/theme.types';
+import { IconType } from '../../utils/types/icon.types';
 import { colorSchemes, htmlClassList } from '../../utils/constants/theme.constants';
 
-export const ThemeSwitcher = () => {
+interface ThemeSwitcherProps {
+  title?: string
+}
+
+export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ title }) => {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') as ColorSchemeOrNull);
+
+  const getThemeIcon = (theme: ColorSchemeOrNull): IconType => {
+    if (theme === 'dark') return 'moon';
+    if (theme === 'light') return 'sun';
+    return 'system';
+  };
 
   const switchTheme = (newTheme: ColorSchemeOrNull) => () => {
     if (newTheme === theme) return;
@@ -32,42 +44,35 @@ export const ThemeSwitcher = () => {
   };
 
   return (
-    <div className="relative">
-      <button type="button">
-        <ThemeIcon theme={theme} />
-      </button>
-      <ul className="absolute w-36 py-1 top-full mt-4 right-2 z-20 bg-secondary text-secondary rounded-lg ring-2 ring-color shadow-lg shadow-color">
-        <li>
-          <button
-            type="button"
+    <Popup icon={getThemeIcon(theme)} title={title}>
+      {({ close }) => (
+        <>
+          <PopupItem
+            close={close}
             onClick={switchTheme(null)}
-            className={`flex items-center gap-2 py-2 px-3.5 w-full hover:bg-primary focus:bg-primary focus:outline-1 rounded-md ${theme === null ? 'text-btn-secondary' : ''}`}
+            icon="system"
+            className={theme === null ? 'text-btn-secondary' : ''}
           >
-            <ThemeIcon theme={null} />
             System
-          </button>
-        </li>
-        <li>
-          <button
-            type="button"
+          </PopupItem>
+          <PopupItem
+            close={close}
             onClick={switchTheme('dark')}
-            className={`flex items-center gap-2 py-2 px-3.5 w-full hover:bg-primary focus:bg-primary focus:outline-1 rounded-md ${theme === 'dark' ? 'text-btn-secondary' : ''}`}
+            icon="moon"
+            className={theme === 'dark' ? 'text-btn-secondary' : ''}
           >
-            <ThemeIcon theme="dark" />
             Dark
-          </button>
-        </li>
-        <li>
-          <button
-            type="button"
+          </PopupItem>
+          <PopupItem
+            close={close}
             onClick={switchTheme('light')}
-            className={`flex items-center gap-2 py-2 px-3.5 w-full hover:bg-primary focus:bg-primary focus:outline-1 rounded-md ${theme === 'light' ? 'text-btn-secondary' : ''}`}
+            icon="sun"
+            className={theme === 'light' ? 'text-btn-secondary' : ''}
           >
-            <ThemeIcon theme="light" />
             Light
-          </button>
-        </li>
-      </ul>
-    </div>
+          </PopupItem>
+        </>
+      )}
+    </Popup>
   );
 };

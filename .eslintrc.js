@@ -35,5 +35,6 @@ module.exports = {
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
     'react/prop-types': 'off',
+    'react/require-default-props': 'off',
   },
 };

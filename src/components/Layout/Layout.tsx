@@ -1,15 +1,17 @@
 import { FC } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { Logo } from '../Logo/Logo';
+import { Container } from '../Container/Container';
+import { Header } from '../Header/Header';
 
 export const Layout: FC = () => (
   <>
-    <header>
-      <Logo />
-      Header
-    </header>
+    <Container>
+      <Header />
+    </Container>
 
-    <Outlet />
+    <Container>
+      <Outlet />
+    </Container>
   </>
 );
