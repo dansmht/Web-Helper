@@ -46,6 +46,7 @@ export default tseslint.config(
         'warn',
         { namedComponents: 'arrow-function' },
       ],
+      '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     },
   }
 );
