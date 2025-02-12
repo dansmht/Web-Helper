@@ -1,5 +1,7 @@
 import { Link } from 'react-router';
 
+import { linkClassName, linkWrapperClassName } from './_constants.ts';
+
 import type { LinkProps } from 'react-router';
 
 type SectionCardLinkProps = Omit<LinkProps, 'children'> & {
@@ -8,10 +10,12 @@ type SectionCardLinkProps = Omit<LinkProps, 'children'> & {
 
 export const SectionCardLink = ({ title, ...rest }: SectionCardLinkProps) => {
   return (
-    <div className="flex h-36 w-52 items-center justify-center bg-orange-400 text-2xl">
-      <Link className="h-full w-full" {...rest}>
+    <li
+      className={`${linkWrapperClassName} hover:border-accent transition-colors duration-200`}
+    >
+      <Link className={linkClassName} {...rest}>
         {title}
       </Link>
-    </div>
+    </li>
   );
 };
