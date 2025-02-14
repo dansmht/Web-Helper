@@ -1,5 +1,5 @@
-import { HomePage } from '../pages/HomePage.tsx';
-import { ReactSectionPage } from '../pages/ReactSection/ReactSectionPage.tsx';
+import { HomePage } from '../pages/main/HomePage.tsx';
+import { ReactSectionPage } from '../pages/section/react/ReactSectionPage.tsx';
 
 import type { RouteProps } from 'react-router';
 

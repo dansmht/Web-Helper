@@ -2,6 +2,7 @@ import { BrowserRouter } from 'react-router';
 import hljs from 'highlight.js/lib/core';
 import typescript from 'highlight.js/lib/languages/typescript';
 
+import { ThemeProvider } from './context/theme/ThemeContext.tsx';
 import { Layout } from './components/Layout/Layout.tsx';
 import { AppRouting } from './routing/AppRouting.tsx';
 
@@ -13,9 +14,11 @@ hljs.registerLanguage('typescript', typescript);
 export const App = () => {
   return (
     <BrowserRouter>
-      <Layout>
-        <AppRouting />
-      </Layout>
+      <ThemeProvider>
+        <Layout>
+          <AppRouting />
+        </Layout>
+      </ThemeProvider>
     </BrowserRouter>
   );
 };
