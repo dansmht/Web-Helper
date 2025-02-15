@@ -1,4 +1,4 @@
 <svg viewBox="0 0 24 24" fill="none" class="w-8 h-8">
-    <path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Z" class="stroke-text-secondary fill-text-secondary/10" stroke-width="2" stroke-linejoin="round"></path>
-    <path d="M14 15c0 3 2 5 2 5H8s2-2 2-5" class="stroke-text-secondary fill-text-secondary/10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Z" class="group-[.active]:stroke-accent group-[.active]:fill-accent/10 stroke-text-secondary fill-text-secondary/10" stroke-width="2" stroke-linejoin="round"></path>
+    <path d="M14 15c0 3 2 5 2 5H8s2-2 2-5" class="group-[.active]:stroke-accent group-[.active]:fill-accent/10 stroke-text-secondary fill-text-secondary/10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
 </svg>
