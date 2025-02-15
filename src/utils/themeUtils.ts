@@ -17,15 +17,15 @@ export const getSystemTheme = (): EfficientTheme =>
   window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
 export const getSavedTheme = (): Theme => {
-  const savedTheme = localStorage.getItem('theme');
+  const savedTheme = localStorage.getItem('theme') as Theme | null;
 
-  if (
-    savedTheme === 'system' ||
-    savedTheme === 'light' ||
-    savedTheme === 'dark'
-  ) {
-    return savedTheme as Theme;
+  if (savedTheme === 'light' || savedTheme === 'dark') {
+    return savedTheme;
   }
 
-  return 'system';
+  if (!savedTheme || savedTheme === 'system') {
+    return getSystemTheme();
+  }
+
+  return 'custom';
 };
