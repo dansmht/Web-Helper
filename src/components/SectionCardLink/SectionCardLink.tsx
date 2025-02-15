@@ -11,7 +11,7 @@ type SectionCardLinkProps = Omit<LinkProps, 'children'> & {
 export const SectionCardLink = ({ title, ...rest }: SectionCardLinkProps) => {
   return (
     <li
-      className={`${linkWrapperClassName} hover:border-accent transition-colors duration-200`}
+      className={`${linkWrapperClassName} hover:border-accent transition-colors duration-300`}
     >
       <Link className={linkClassName} {...rest}>
         {title}

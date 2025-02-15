@@ -3,6 +3,9 @@
     --color-bg-secondary: #030712;
     --color-text-primary: #ffffff;
     --color-text-secondary: #dddddd;
-    --color-accent: #74d4ff;
-    --color-dimmed-accent: #006999;
+    --color-accent: #38bdf8;
+    --color-dimmed-accent: #0ea5e9;
+    /*--color-bg-accent: #0ea5e9;*/
+    /*--color-text-accent: #38bdf8;*/
+    --color-bg-hover: #4755694d;
 }

@@ -8,6 +8,7 @@ export type ThemeCssVars = {
   '--color-text-secondary': string;
   '--color-accent': string;
   '--color-dimmed-accent': string;
+  '--color-bg-hover': string;
 };
 export type ThemeCssVarsKeys = keyof ThemeCssVars;
 
