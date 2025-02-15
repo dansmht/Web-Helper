@@ -42,9 +42,9 @@ export const ThemePage = () => {
           border: 'none',
         }}
       >
-        {theme === 'light' && <LightIcon />}
-        {theme === 'dark' && <DarkIcon />}
-        {theme === 'system' && <SystemIcon />}
+        <LightIcon />
+        <DarkIcon />
+        <SystemIcon />
       </button>
     </div>
   );
