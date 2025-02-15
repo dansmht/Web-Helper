@@ -18,14 +18,11 @@ export const getSystemTheme = (): EfficientTheme =>
 
 export const getSavedTheme = (): Theme => {
   const savedTheme = localStorage.getItem('theme') as Theme | null;
+  const validThemes: Theme[] = ['system', 'light', 'dark'];
 
-  if (savedTheme === 'light' || savedTheme === 'dark') {
-    return savedTheme;
+  if (!savedTheme) {
+    return 'system';
   }
 
-  if (!savedTheme || savedTheme === 'system') {
-    return getSystemTheme();
-  }
-
-  return 'custom';
+  return validThemes.includes(savedTheme) ? savedTheme : 'custom';
 };
