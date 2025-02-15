@@ -5,22 +5,22 @@ import { useKeyboardNavigation } from '../../hooks/dropdown/useKeyboardNavigatio
 
 import type { ReactNode } from 'react';
 
-type DropdownOption = {
-  value: string;
+type DropdownOption<T extends string = string> = {
+  value: T;
   element: ReactNode;
 };
 
-type DropdownProps = {
-  options: DropdownOption[];
-  onSelect: (value: string) => void;
-  defaultLabel?: string;
+type DropdownProps<T extends string = string> = {
+  options: DropdownOption<T>[];
+  onSelect: (value: T) => void;
+  buttonContent?: ReactNode;
 };
 
-export const Dropdown = ({
+export const Dropdown = <T extends string = string>({
   options,
   onSelect,
-  defaultLabel = 'Select an option',
-}: DropdownProps) => {
+  buttonContent = 'Select an option',
+}: DropdownProps<T>) => {
   const {
     isOpen,
     selected,
@@ -32,7 +32,7 @@ export const Dropdown = ({
   } = useDropdown();
 
   const handleOptionSelect = useCallback(
-    (option: DropdownOption) => {
+    (option: DropdownOption<T>) => {
       setSelected(option.value);
       closeDropdown();
       onSelect(option.value);
@@ -62,19 +62,21 @@ export const Dropdown = ({
         ref={buttonRef}
         aria-haspopup="true"
         aria-expanded={isOpen}
-        className="cursor-pointer rounded-md border border-gray-300 bg-white px-4 py-2 text-sm text-gray-700 shadow-sm hover:bg-gray-50"
+        className="cursor-pointer px-4 py-2 shadow-sm"
       >
-        {options.find((option) => option.value === selected)?.element ??
-          defaultLabel}
+        {buttonContent}
       </button>
 
       {isOpen && (
         <div
-          className="absolute top-full right-0 z-20 mt-4 w-30 rounded-md bg-white shadow-lg"
+          className="bg-bg-primary ring-text-secondary hover:ring-accent focus-within:ring-accent absolute top-full right-0 z-20 mt-4 rounded-md ring-2 shadow-lg transition-shadow duration-300"
           role="menu"
           aria-orientation="vertical"
         >
-          <ul className="overflow-hidden py-1" role="listbox">
+          <ul
+            className="overflow-hidden text-base font-semibold"
+            role="listbox"
+          >
             {options.map((option, index) => (
               <li
                 key={option.value}
@@ -82,7 +84,7 @@ export const Dropdown = ({
                 onKeyDown={(e) => handleOptionKeyDown(e, index)}
                 role="option"
                 tabIndex={0}
-                className="cursor-pointer px-4 py-2 text-sm text-gray-700 select-none hover:bg-gray-100"
+                className={`hover:bg-bg-hover cursor-pointer px-4 py-2 select-none first:rounded-t-sm last:rounded-b-sm ${selected === option.value ? 'group active text-accent' : 'text-text-secondary'}`}
               >
                 {option.element}
               </li>
