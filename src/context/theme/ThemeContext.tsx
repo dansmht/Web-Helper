@@ -14,7 +14,12 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
 
   const updateTheme = (newTheme: Theme) => {
     setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
+
+    if (newTheme === 'system') {
+      localStorage.removeItem('theme');
+    } else {
+      localStorage.setItem('theme', newTheme);
+    }
   };
 
   useEffect(() => {
