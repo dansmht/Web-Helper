@@ -6,7 +6,7 @@ type SectionCardLinkSoonProps = {
 
 export const SectionCardLinkSoon = ({ title }: SectionCardLinkSoonProps) => {
   return (
-    <li className={linkWrapperClassName}>
+    <li className={`${linkWrapperClassName} ring-text-secondary ring-2`}>
       <span className={`${linkClassName} cursor-default`}>{title} (Soon)</span>
     </li>
   );

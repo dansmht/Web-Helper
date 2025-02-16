@@ -1,3 +1,12 @@
 @import "tailwindcss";
 
 @import "./variables.css";
+
+.transition-smooth {
+    @apply transition-all duration-500;
+}
+
+.border-ring {
+    @apply ring-2 ring-text-secondary hover:ring-accent focus-within:ring-accent border-none outline-none;
+    @apply transition-all duration-500;
+}

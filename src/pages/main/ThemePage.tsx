@@ -17,17 +17,7 @@ export const ThemePage = () => {
   };
 
   return (
-    <div
-      style={{
-        backgroundColor: 'var(--color-bg-primary)',
-        color: 'var(--color-text-primary)',
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
+    <div className="bg-bg-primary text-text-primary transition-smooth flex flex-col items-center justify-center">
       <h1>Theme Switcher</h1>
       <p style={{ color: 'var(--color-text-secondary)' }}>
         Current Theme: <strong>{theme}</strong>

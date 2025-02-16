@@ -62,14 +62,14 @@ export const Dropdown = <T extends string = string>({
         ref={buttonRef}
         aria-haspopup="true"
         aria-expanded={isOpen}
-        className="cursor-pointer px-4 py-2 shadow-sm"
+        className="border-ring cursor-pointer rounded-md px-4 py-2"
       >
         {buttonContent}
       </button>
 
       {isOpen && (
         <div
-          className="bg-bg-primary ring-text-secondary hover:ring-accent focus-within:ring-accent absolute top-full right-0 z-20 mt-4 rounded-md ring-2 shadow-lg transition-shadow duration-300"
+          className="bg-bg-primary border-ring absolute top-full right-0 z-20 mt-4 rounded-md"
           role="menu"
           aria-orientation="vertical"
         >

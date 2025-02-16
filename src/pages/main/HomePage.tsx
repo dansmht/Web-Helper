@@ -1,6 +1,5 @@
 import { SectionCardLink } from '../../components/SectionCardLink/SectionCardLink.tsx';
 import { SectionCardLinkSoon } from '../../components/SectionCardLink/SectionCardLinkSoon.tsx';
-import { ThemePage } from './ThemePage.tsx';
 
 export const HomePage = () => {
   return (
@@ -10,7 +9,6 @@ export const HomePage = () => {
         <SectionCardLinkSoon title="JavaScript" />
         <SectionCardLinkSoon title="TypeScript" />
       </ul>
-      <ThemePage />
     </>
   );
 };
