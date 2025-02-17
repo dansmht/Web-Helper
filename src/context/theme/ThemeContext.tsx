@@ -1,7 +1,11 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
-import { applyThemeVariables, getSavedTheme } from '../../utils/themeUtils.ts';
+import { useSkipFirstRenderEffect } from '../../hooks/useSkipFirstRenderEffect.ts';
 import { useSystemTheme } from '../../hooks/theme/useSystemTheme.ts';
+import {
+  applyThemeVariablesByTheme,
+  getSavedTheme,
+} from '../../utils/themeUtils.ts';
 
 import type { PropsWithChildren } from 'react';
 import type { ThemeContextProps, Theme } from '../../types/themeTypes.ts';
@@ -22,8 +26,8 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  useEffect(() => {
-    applyThemeVariables(theme === 'system' ? systemTheme : theme);
+  useSkipFirstRenderEffect(() => {
+    applyThemeVariablesByTheme(theme);
   }, [theme, systemTheme]);
 
   return (
