@@ -5,6 +5,7 @@ import {
   applyThemeVariables,
   getCustomThemeVars,
 } from '../../utils/themeUtils.ts';
+import { LocalStorageKeys } from '../../constants/localStorageKeys.ts';
 
 export const ThemePage = () => {
   const { theme, updateTheme } = useTheme();
@@ -20,12 +21,15 @@ export const ThemePage = () => {
   };
 
   const saveTheme = () => {
-    localStorage.setItem('customThemeVariables', JSON.stringify(cssVariables));
+    localStorage.setItem(
+      LocalStorageKeys.CUSTOM_THEME_VARIABLES,
+      JSON.stringify(cssVariables)
+    );
     updateTheme('custom');
   };
 
   const resetTheme = () => {
-    localStorage.removeItem('customThemeVariables');
+    localStorage.removeItem(LocalStorageKeys.CUSTOM_THEME_VARIABLES);
     updateTheme('system');
     setCssVariables(getCustomThemeVars());
   };

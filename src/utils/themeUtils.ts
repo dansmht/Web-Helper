@@ -1,5 +1,6 @@
 import { isHexColor, isObject } from './helpers.ts';
 import { themeVars } from '../constants/theme/themeConstants.ts';
+import { LocalStorageKeys } from '../constants/localStorageKeys.ts';
 
 import type {
   EfficientTheme,
@@ -26,13 +27,14 @@ export const applyThemeVariablesByTheme = (theme: Theme) => {
   applyThemeVariables(themeVariables);
 };
 
-export const getTheme = () => localStorage.getItem('theme') as Theme | null;
+export const getThemeFromLocalStorage = () =>
+  localStorage.getItem(LocalStorageKeys.THEME) as Theme | null;
 
 export const getSystemTheme = (): EfficientTheme =>
   window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
 export const getSavedTheme = (): Theme => {
-  const savedTheme = getTheme();
+  const savedTheme = getThemeFromLocalStorage();
   const validThemes: Theme[] = ['system', 'light', 'dark'];
 
   if (!savedTheme) {
@@ -55,7 +57,9 @@ export const getThemeVars = (theme: Theme | null) => {
 export const getSystemThemeVars = () => themeVars[getSystemTheme()];
 
 export const getCustomThemeVars = () => {
-  const storedCustomThemeVars = localStorage.getItem('customThemeVariables');
+  const storedCustomThemeVars = localStorage.getItem(
+    LocalStorageKeys.CUSTOM_THEME_VARIABLES
+  );
 
   if (storedCustomThemeVars) {
     try {
@@ -83,7 +87,7 @@ export const getCustomThemeVars = () => {
 };
 
 export const loadTheme = () => {
-  const theme = getTheme();
+  const theme = getThemeFromLocalStorage();
 
   const themeCssVars = getThemeVars(theme);
 

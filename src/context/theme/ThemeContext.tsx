@@ -6,6 +6,7 @@ import {
   applyThemeVariablesByTheme,
   getSavedTheme,
 } from '../../utils/themeUtils.ts';
+import { LocalStorageKeys } from '../../constants/localStorageKeys.ts';
 
 import type { PropsWithChildren } from 'react';
 import type { ThemeContextProps, Theme } from '../../types/themeTypes.ts';
@@ -20,9 +21,9 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
     setTheme(newTheme);
 
     if (newTheme === 'system') {
-      localStorage.removeItem('theme');
+      localStorage.removeItem(LocalStorageKeys.THEME);
     } else {
-      localStorage.setItem('theme', newTheme);
+      localStorage.setItem(LocalStorageKeys.THEME, newTheme);
     }
   };
 
