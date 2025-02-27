@@ -1,6 +1,7 @@
 @import "tailwindcss";
-
 @import "./variables.css";
+
+@plugin "@tailwindcss/typography";
 
 .transition-smooth {
     @apply transition-all duration-500;
