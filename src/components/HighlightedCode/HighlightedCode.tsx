@@ -3,7 +3,6 @@ import hljs from 'highlight.js/lib/core';
 
 type HighlightedCodeProps = {
   code: string;
-  language?: string;
 };
 
 export const HighlightedCode = ({ code }: HighlightedCodeProps) => {
