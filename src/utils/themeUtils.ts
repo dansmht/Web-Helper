@@ -8,6 +8,9 @@ import type {
   ThemeCssVarsKeys,
 } from '../types/themeTypes.ts';
 
+export const isEfficientTheme = (theme: Theme): theme is EfficientTheme =>
+  theme === 'light' || theme === 'dark';
+
 export const applyThemeVariables = (themeVariables: Record<string, string>) => {
   Object.entries(themeVariables).forEach(([variable, value]) => {
     document.documentElement.style.setProperty(variable, value);
@@ -17,12 +20,11 @@ export const applyThemeVariables = (themeVariables: Record<string, string>) => {
 export const applyThemeVariablesByTheme = (theme: Theme) => {
   const isCustomTheme = theme === 'custom';
 
-  const effectiveTheme =
-    theme in themeVars ? (theme as EfficientTheme) : getSystemTheme();
+  const efficientTheme = isEfficientTheme(theme) ? theme : getSystemTheme();
 
   const themeVariables = isCustomTheme
     ? getCustomThemeVars()
-    : themeVars[effectiveTheme];
+    : themeVars[efficientTheme];
 
   applyThemeVariables(themeVariables);
 };
