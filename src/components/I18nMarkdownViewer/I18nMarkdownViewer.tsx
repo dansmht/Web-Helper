@@ -9,13 +9,20 @@ import { useTheme } from '../../context/theme/ThemeContext.tsx';
 import { useSystemTheme } from '../../hooks/theme/useSystemTheme.ts';
 import { isEfficientTheme } from '../../utils/themeUtils.ts';
 
-export const I18nMarkdownViewer = () => {
+import type { Section } from '../../types/sharedTypes.ts';
+
+type I18nMarkdownViewerProps = {
+  section: Section;
+};
+
+export const I18nMarkdownViewer = ({ section }: I18nMarkdownViewerProps) => {
   const { topic } = useParams<{ topic: string }>();
   const { language } = useTranslation();
   const { theme } = useTheme();
   const systemTheme = useSystemTheme();
 
   const { content, error, isLoading } = useI18nMarkdownLoader({
+    section,
     fileName: topic ?? '',
     language,
   });

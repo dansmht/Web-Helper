@@ -12,19 +12,23 @@ const INITIAL_STATE: MarkdownLoaderState = {
 };
 
 const fetchMarkdownContent = async (
-  { fileName, language }: I18nMarkdownLoaderParams,
+  { section, fileName, language }: I18nMarkdownLoaderParams,
   signal: AbortSignal
 ): Promise<string> => {
-  const response = await fetch(`/markdown/${language}/${fileName}.md`, {
-    signal,
-  });
+  const response = await fetch(
+    `/markdown/${language}/${section}/${fileName}.md`,
+    {
+      signal,
+    }
+  );
   if (!response.ok) {
-    throw new Error(`Failed to load ${fileName} (${language})`);
+    throw new Error(`Failed to load [${section}] ${fileName} (${language})`);
   }
   return response.text();
 };
 
 export const useI18nMarkdownLoader = ({
+  section,
   fileName,
   language,
 }: I18nMarkdownLoaderParams): MarkdownLoaderState => {
@@ -41,7 +45,7 @@ export const useI18nMarkdownLoader = ({
 
       try {
         const content = await fetchMarkdownContent(
-          { fileName, language },
+          { section, fileName, language },
           signal
         );
         setState({ content, error: null, isLoading: false });

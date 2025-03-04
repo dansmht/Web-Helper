@@ -20,6 +20,6 @@ export const routes: RouteProps[] = [
   },
   {
     path: 'react/:topic',
-    element: <I18nMarkdownViewer />,
+    element: <I18nMarkdownViewer section="react" />,
   },
 ];
