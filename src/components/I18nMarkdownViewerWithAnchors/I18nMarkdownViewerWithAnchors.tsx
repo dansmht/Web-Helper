@@ -3,19 +3,24 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 
+import { AnchorList } from '../AnchorList/AnchorList.tsx';
 import { useI18nMarkdownLoader } from '../../hooks/markdown/useI18nMarkdownLoader.ts';
+import { useMarkdownAnchors } from '../../hooks/markdown/useMarkdownAnchors.ts';
 import { useTranslation } from '../../context/i18n/I18nContext.tsx';
 import { useTheme } from '../../context/theme/ThemeContext.tsx';
 import { useSystemTheme } from '../../hooks/theme/useSystemTheme.ts';
 import { isEfficientTheme } from '../../utils/themeUtils.ts';
 
 import type { Section } from '../../types/sharedTypes.ts';
+import { useScrollToHash } from '../../hooks/markdown/useScrollToHash.ts';
 
 type I18nMarkdownViewerProps = {
   section: Section;
 };
 
-export const I18nMarkdownViewer = ({ section }: I18nMarkdownViewerProps) => {
+export const I18nMarkdownViewerWithAnchors = ({
+  section,
+}: I18nMarkdownViewerProps) => {
   const { topic: fileName = '' } = useParams<{ topic: string }>();
   const { language } = useTranslation();
   const { theme } = useTheme();
@@ -27,8 +32,12 @@ export const I18nMarkdownViewer = ({ section }: I18nMarkdownViewerProps) => {
     language,
   });
 
+  const { anchors, ref } = useMarkdownAnchors(content);
+
+  useScrollToHash(ref);
+
   const computedTheme = isEfficientTheme(theme) ? theme : systemTheme;
-  const wrapperClassName = `prose transition-smooth max-w-none ${
+  const wrapperClassName = `my-10 prose transition-smooth max-w-none ${
     computedTheme === 'dark' ? 'prose-invert' : ''
   }`;
 
@@ -36,12 +45,16 @@ export const I18nMarkdownViewer = ({ section }: I18nMarkdownViewerProps) => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className={wrapperClassName}>
-      <ReactMarkdown
-        children={content}
-        remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeHighlight]}
-      />
-    </div>
+    <>
+      <AnchorList anchors={anchors} />
+
+      <div ref={ref} className={wrapperClassName}>
+        <ReactMarkdown
+          children={content}
+          remarkPlugins={[remarkGfm]}
+          rehypePlugins={[rehypeHighlight]}
+        />
+      </div>
+    </>
   );
 };

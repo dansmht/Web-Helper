@@ -67,7 +67,7 @@ export const useI18nMarkdownLoader = ({
     return () => {
       controller.abort();
     };
-  }, [fileName, language]);
+  }, [fileName, language, section]);
 
   return state;
 };
