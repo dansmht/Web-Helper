@@ -20,11 +20,11 @@ export const applyThemeVariables = (themeVariables: Record<string, string>) => {
 export const applyThemeVariablesByTheme = (theme: Theme) => {
   const isCustomTheme = theme === 'custom';
 
-  const efficientTheme = isEfficientTheme(theme) ? theme : getSystemTheme();
+  const computedTheme = isEfficientTheme(theme) ? theme : getSystemTheme();
 
   const themeVariables = isCustomTheme
     ? getCustomThemeVars()
-    : themeVars[efficientTheme];
+    : themeVars[computedTheme];
 
   applyThemeVariables(themeVariables);
 };
