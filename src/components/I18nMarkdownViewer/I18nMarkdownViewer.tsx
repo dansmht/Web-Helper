@@ -16,14 +16,14 @@ type I18nMarkdownViewerProps = {
 };
 
 export const I18nMarkdownViewer = ({ section }: I18nMarkdownViewerProps) => {
-  const { topic } = useParams<{ topic: string }>();
+  const { topic: fileName = '' } = useParams<{ topic: string }>();
   const { language } = useTranslation();
   const { theme } = useTheme();
   const systemTheme = useSystemTheme();
 
   const { content, error, isLoading } = useI18nMarkdownLoader({
     section,
-    fileName: topic ?? '',
+    fileName,
     language,
   });
 
@@ -32,17 +32,16 @@ export const I18nMarkdownViewer = ({ section }: I18nMarkdownViewerProps) => {
     computedTheme === 'dark' ? 'prose-invert' : ''
   }`;
 
-  const renderContent = () => {
-    if (isLoading) return <p>Loading...</p>;
-    if (error) return <p>{error}</p>;
-    return (
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
+
+  return (
+    <div className={wrapperClassName}>
       <ReactMarkdown
-        children={content ?? ''}
+        children={content}
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeHighlight]}
       />
-    );
-  };
-
-  return <div className={wrapperClassName}>{renderContent()}</div>;
+    </div>
+  );
 };
