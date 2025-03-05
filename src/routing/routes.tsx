@@ -1,9 +1,13 @@
-import { HomePage } from '../pages/main/HomePage.tsx';
-import { ThemePage } from '../pages/main/ThemePage.tsx';
-import { ReactSectionPage } from '../pages/section/react/ReactSectionPage.tsx';
-import { I18nMarkdownViewerWithAnchors } from '../components/I18nMarkdownViewerWithAnchors/I18nMarkdownViewerWithAnchors.tsx';
+import { lazyLoad } from '../utils/lazyLoad.tsx';
 
 import type { RouteProps } from 'react-router';
+
+const HomePage = lazyLoad('../pages/main/HomePage.tsx');
+const ThemePage = lazyLoad('../pages/main/ThemePage.tsx');
+const ReactSectionPage = lazyLoad('../pages/section/react/ReactSectionPage');
+const I18nMarkdownViewerWithAnchors = lazyLoad(
+  '../components/I18nMarkdownViewerWithAnchors/I18nMarkdownViewerWithAnchors'
+);
 
 export const routes: RouteProps[] = [
   {

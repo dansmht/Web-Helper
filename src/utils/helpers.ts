@@ -7,3 +7,9 @@ export const isObject = (
 ): value is Record<string | number | symbol, unknown> => {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 };
+
+export const findExportName = (importPath: string): string | null => {
+  const regex = /\/([^/]+?)(\.[^/.]+)?$/;
+  const match = regex.exec(importPath);
+  return match ? match[1] : null;
+};
