@@ -1,13 +1,37 @@
-import { lazyLoad } from '../utils/lazyLoad.tsx';
+import { lazy } from 'react';
+
+const HomePage = lazy(() =>
+  import('../pages/main/HomePage.tsx').then((module) => ({
+    default: module.HomePage,
+  }))
+);
+
+const ThemePage = lazy(() =>
+  import('../pages/main/ThemePage.tsx').then((module) => ({
+    default: module.ThemePage,
+  }))
+);
+
+const ReactSectionPage = lazy(() =>
+  import('../pages/section/react/ReactSectionPage.tsx').then((module) => ({
+    default: module.ReactSectionPage,
+  }))
+);
+
+const I18nMarkdownViewerWithAnchors = lazy(() =>
+  import(
+    '../components/I18nMarkdownViewerWithAnchors/I18nMarkdownViewerWithAnchors.tsx'
+  ).then((module) => ({
+    default: module.I18nMarkdownViewerWithAnchors,
+  }))
+);
 
 export const LazyPages = {
-  home: lazyLoad('../pages/main/HomePage.tsx'),
-  theme: lazyLoad('../pages/main/ThemePage.tsx'),
-  reactSection: lazyLoad('../pages/section/react/ReactSectionPage'),
+  home: HomePage,
+  theme: ThemePage,
+  reactSection: ReactSectionPage,
 };
 
 export const LazyComponents = {
-  i18nMarkdownViewer: lazyLoad(
-    '../components/I18nMarkdownViewerWithAnchors/I18nMarkdownViewerWithAnchors'
-  ),
+  i18nMarkdownViewer: I18nMarkdownViewerWithAnchors,
 };
