@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import { Dropdown } from '../Dropdown/Dropdown.tsx';
 import { DropdownButtonContent } from './DropdownButtonContent.tsx';
 import { useTheme } from '../../context/theme/ThemeContext.tsx';
+import { useTranslation } from '../../context/i18n/I18nContext.tsx';
 
 import SystemIcon from '../../assets/icons/system.svg?react';
 import LightIcon from '../../assets/icons/light.svg?react';
@@ -19,12 +20,12 @@ type ThemeOption = {
 };
 
 const themeOptions: ThemeOption[] = [
-  { value: 'system', label: 'System', icon: <SystemIcon /> },
-  { value: 'light', label: 'Light', icon: <LightIcon /> },
-  { value: 'dark', label: 'Dark', icon: <DarkIcon /> },
+  { value: 'system', label: 'theme.system', icon: <SystemIcon /> },
+  { value: 'light', label: 'theme.light', icon: <LightIcon /> },
+  { value: 'dark', label: 'theme.dark', icon: <DarkIcon /> },
   {
     value: 'custom',
-    label: 'Custom',
+    label: 'theme.custom',
     icon: <CustomIcon />,
     linkTo: '/custom-theme',
   },
@@ -47,6 +48,9 @@ export const ThemeDropdown = () => {
 };
 
 const createDropdownOption = ({ value, label, icon, linkTo }: ThemeOption) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { t } = useTranslation();
+
   const Element: ElementType = linkTo ? Link : 'div';
   const elementProps = linkTo ? { to: linkTo } : {};
 
@@ -55,7 +59,7 @@ const createDropdownOption = ({ value, label, icon, linkTo }: ThemeOption) => {
     element: (
       <Element {...elementProps} className="flex items-center space-x-2">
         {icon}
-        <span>{label}</span>
+        <span>{t(label)}</span>
       </Element>
     ),
   };
