@@ -57,7 +57,10 @@ const createDropdownOption = ({ value, label, icon, linkTo }: ThemeOption) => {
   return {
     value,
     element: (
-      <Element {...elementProps} className="flex items-center space-x-2">
+      <Element
+        {...elementProps}
+        className="flex items-center space-x-2 px-4 py-2"
+      >
         {icon}
         <span>{t(label)}</span>
       </Element>
