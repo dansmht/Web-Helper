@@ -7,13 +7,13 @@ import { ErrorFallback } from '../components/ErrorFallback/ErrorFallback.tsx';
 import { routes } from './routes.tsx';
 
 export const AppRouting = () => (
-  <Routes>
-    <ErrorBoundary FallbackComponent={ErrorFallback}>
-      <Suspense fallback={<div>Loading...</div>}>
+  <ErrorBoundary FallbackComponent={ErrorFallback}>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Routes>
         {routes.map((route, i) => (
           <Route key={i} {...route} />
         ))}
-      </Suspense>
-    </ErrorBoundary>
-  </Routes>
+      </Routes>
+    </Suspense>
+  </ErrorBoundary>
 );
