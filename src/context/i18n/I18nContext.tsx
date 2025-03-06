@@ -3,7 +3,11 @@ import { createContext, useContext, useState } from 'react';
 import { translations } from '../../translations';
 
 import type { PropsWithChildren } from 'react';
-import type { I18nContextProps, Language } from '../../types/i18n.ts';
+import type {
+  I18nContextProps,
+  Language,
+  Translations,
+} from '../../types/i18n.ts';
 
 const I18nContext = createContext<I18nContextProps | undefined>(undefined);
 
@@ -11,7 +15,18 @@ export const I18nProvider = ({ children }: PropsWithChildren) => {
   const [language, setLanguage] = useState<Language>('en');
 
   const t = (key: string, options: Record<string, string> = {}): string => {
-    const template = translations[language][key] || key;
+    const template = key
+      .split('.')
+      .reduce<string | Translations | undefined>((acc, segment) => {
+        return typeof acc === 'object' && acc !== null
+          ? acc[segment]
+          : undefined;
+      }, translations[language]);
+
+    if (typeof template !== 'string') {
+      return key;
+    }
+
     return template.replace(
       /{{(\w+)}}/g,
       (_, placeholder: string) => options[placeholder] || ''
