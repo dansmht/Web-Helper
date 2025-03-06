@@ -38,6 +38,7 @@ export const ThemePage = () => {
     applyThemeVariables(cssVariables);
   };
 
+  // TODO
   return (
     <div className="bg-bg-primary text-text-primary transition-smooth flex flex-col items-center justify-center">
       <h1>Theme Switcher</h1>
