@@ -3,18 +3,10 @@ import { useCallback, useEffect } from 'react';
 import { useDropdown } from '../../hooks/dropdown/useDropdown.tsx';
 import { useKeyboardNavigation } from '../../hooks/dropdown/useKeyboardNavigation.tsx';
 
-import type { ReactNode } from 'react';
-
-type DropdownOption<T extends string = string> = {
-  value: T;
-  element: ReactNode;
-};
-
-type DropdownProps<T extends string = string> = {
-  options: DropdownOption<T>[];
-  onSelect: (value: T) => void;
-  buttonContent?: ReactNode;
-};
+import type {
+  DropdownOption,
+  DropdownProps,
+} from '../../types/dropdownTypes.ts';
 
 export const Dropdown = <T extends string = string>({
   options,

@@ -1,20 +1,23 @@
 import { createContext, useContext, useState } from 'react';
 
+import { getSavedLanguage } from '../../utils/languageUtils.ts';
 import { translations } from '../../translations';
+import { LocalStorageKeys } from '../../constants/localStorageKeys.ts';
 
 import type { PropsWithChildren } from 'react';
 import type {
   I18nContextProps,
   Language,
+  TFunction,
   Translations,
 } from '../../types/i18n.ts';
 
 const I18nContext = createContext<I18nContextProps | undefined>(undefined);
 
 export const I18nProvider = ({ children }: PropsWithChildren) => {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>(getSavedLanguage);
 
-  const t = (key: string, options: Record<string, string> = {}): string => {
+  const t: TFunction = (key, options = {}) => {
     const template = key
       .split('.')
       .reduce<string | Translations | undefined>((acc, segment) => {
@@ -33,7 +36,10 @@ export const I18nProvider = ({ children }: PropsWithChildren) => {
     );
   };
 
-  const changeLanguage = (lang: Language) => setLanguage(lang);
+  const changeLanguage = (lang: Language) => {
+    setLanguage(lang);
+    localStorage.setItem(LocalStorageKeys.LANGUAGE, lang);
+  };
 
   return (
     <I18nContext.Provider value={{ t, changeLanguage, language }}>

@@ -8,6 +8,10 @@ export const sharedTranslations: Record<Language, Translations> = {
     error: {
       something_went_wrong: 'Something went wrong',
     },
+    language: {
+      en: 'English',
+      ru: 'Русский',
+    },
     theme: {
       system: 'System',
       light: 'Light',
@@ -21,6 +25,10 @@ export const sharedTranslations: Record<Language, Translations> = {
     try_again: 'Попробуйте снова',
     error: {
       something_went_wrong: 'Что-то пошло не так',
+    },
+    language: {
+      en: 'English',
+      ru: 'Русский',
     },
     theme: {
       system: 'Системная',

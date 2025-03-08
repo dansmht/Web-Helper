@@ -3,8 +3,13 @@ export type Translations = {
   [key: string]: string | Translations;
 };
 
+export type TFunction = (
+  key: string,
+  options?: Record<string, string>
+) => string;
+
 export type I18nContextProps = {
-  t: (key: string, options?: Record<string, string>) => string;
+  t: TFunction;
   changeLanguage: (lang: Language) => void;
   language: Language;
 };
