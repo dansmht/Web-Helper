@@ -5,14 +5,16 @@ type AnchorListProps = {
 };
 
 export const AnchorList = ({ anchors }: AnchorListProps) => {
-  // TODO styles
   return (
-    <nav className="sticky top-0 z-10 border-b border-gray-200 bg-white">
+    <nav className="bg-bg-primary w-fit rounded-xl p-4">
       <ul>
-        {anchors.map((anchor) => (
-          <li key={anchor.id}>
-            <a href={`#${anchor.id}`} className="text-blue-500 hover:underline">
-              {anchor.text}
+        {anchors.map(({ id, text, spacing }) => (
+          <li key={id}>
+            <a
+              href={`#${id}`}
+              className={`text-accent hover:text-dimmed-accent hover:bg-accent/10 transition-smooth ml-2 rounded-md p-1 hover:underline ${spacing && 'ml-6'}`}
+            >
+              {text}
             </a>
           </li>
         ))}

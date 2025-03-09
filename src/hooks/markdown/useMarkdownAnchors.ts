@@ -17,7 +17,11 @@ export const useMarkdownAnchors = (content: string | null) => {
         const text = heading.textContent ?? '';
         const id = text.replace(/\s+/g, '-').toLowerCase();
         heading.setAttribute('id', id);
-        tempAnchors.push({ id, text });
+        tempAnchors.push({
+          id,
+          text,
+          spacing: heading.tagName === 'H3',
+        });
       });
 
       setAnchors(tempAnchors);
