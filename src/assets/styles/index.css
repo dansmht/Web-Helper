@@ -3,6 +3,10 @@
 
 @plugin "@tailwindcss/typography";
 
+html {
+    scroll-behavior: smooth;
+}
+
 @utility transition-smooth {
     @apply transition-all duration-500;
 }
