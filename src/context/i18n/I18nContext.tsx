@@ -48,7 +48,6 @@ export const I18nProvider = ({ children }: PropsWithChildren) => {
   );
 };
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const useTranslation = () => {
   const context = useContext(I18nContext);
   if (!context) {
