@@ -18,6 +18,14 @@ const ReactSectionPage = lazy(() =>
   }))
 );
 
+const ArchitectureSectionPage = lazy(() =>
+  import('../pages/section/architecture/ArchitectureSectionPage.tsx').then(
+    (module) => ({
+      default: module.ArchitectureSectionPage,
+    })
+  )
+);
+
 const I18nMarkdownViewerWithAnchors = lazy(() =>
   import(
     '../components/I18nMarkdownViewerWithAnchors/I18nMarkdownViewerWithAnchors.tsx'
@@ -30,6 +38,7 @@ export const LazyPages = {
   home: HomePage,
   theme: ThemePage,
   reactSection: ReactSectionPage,
+  architectureSection: ArchitectureSectionPage,
 };
 
 export const LazyComponents = {

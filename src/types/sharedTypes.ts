@@ -1,4 +1,4 @@
-export type Section = 'react' | 'typescript' | 'javascript';
+export type Section = 'react' | 'typescript' | 'javascript' | 'architecture';
 
 export type AnchorLink = {
   id: string;

@@ -19,4 +19,12 @@ export const routes: RouteProps[] = [
     path: 'react/:topic',
     element: <LazyComponents.i18nMarkdownViewer section="react" />,
   },
+  {
+    path: 'architecture',
+    element: <LazyPages.architectureSection />,
+  },
+  {
+    path: 'architecture/:topic',
+    element: <LazyComponents.i18nMarkdownViewer section="architecture" />,
+  },
 ];
