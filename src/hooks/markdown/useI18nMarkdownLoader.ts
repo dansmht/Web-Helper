@@ -11,20 +11,28 @@ const INITIAL_STATE: MarkdownLoaderState = {
   isLoading: true,
 };
 
+const cache = new Map<string, string>();
+
 const fetchMarkdownContent = async (
   { section, fileName, language }: I18nMarkdownLoaderParams,
   signal: AbortSignal
 ): Promise<string> => {
-  const response = await fetch(
-    `/markdown/${language}/${section}/${fileName}.md`,
-    {
-      signal,
-    }
-  );
+  const cacheKey = `${language}/${section}/${fileName}`;
+
+  if (cache.has(cacheKey)) {
+    return cache.get(cacheKey)!;
+  }
+
+  const response = await fetch(`/markdown/${cacheKey}.md`, { signal });
+
   if (!response.ok) {
     throw new Error(`Failed to load [${section}] ${fileName} (${language})`);
   }
-  return response.text();
+
+  const text = await response.text();
+  cache.set(cacheKey, text);
+
+  return text;
 };
 
 export const useI18nMarkdownLoader = ({
