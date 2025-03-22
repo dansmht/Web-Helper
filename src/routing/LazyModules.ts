@@ -1,29 +1,15 @@
 import { lazy } from 'react';
 
-const HomePage = lazy(() =>
-  import('../pages/main/HomePage.tsx').then((module) => ({
-    default: module.HomePage,
+const SectionCardsPage = lazy(() =>
+  import('../pages/SectionCardsPage/SectionCardsPage.tsx').then((module) => ({
+    default: module.SectionCardsPage,
   }))
 );
 
 const ThemePage = lazy(() =>
-  import('../pages/main/ThemePage.tsx').then((module) => ({
+  import('../pages/ThemePage/ThemePage.tsx').then((module) => ({
     default: module.ThemePage,
   }))
-);
-
-const ReactSectionPage = lazy(() =>
-  import('../pages/section/react/ReactSectionPage.tsx').then((module) => ({
-    default: module.ReactSectionPage,
-  }))
-);
-
-const ArchitectureSectionPage = lazy(() =>
-  import('../pages/section/architecture/ArchitectureSectionPage.tsx').then(
-    (module) => ({
-      default: module.ArchitectureSectionPage,
-    })
-  )
 );
 
 const I18nMarkdownViewerWithAnchors = lazy(() =>
@@ -35,10 +21,8 @@ const I18nMarkdownViewerWithAnchors = lazy(() =>
 );
 
 export const LazyPages = {
-  home: HomePage,
+  sectionCards: SectionCardsPage,
   theme: ThemePage,
-  reactSection: ReactSectionPage,
-  architectureSection: ArchitectureSectionPage,
 };
 
 export const LazyComponents = {

@@ -4,16 +4,9 @@ import { SectionCardLinkSoon } from '../../components/SectionCardLink/SectionCar
 
 import { useTitle } from '../../hooks/useTitle.ts';
 
-type SectionCardsPageProps = {
-  documentTitle: string;
-  cardLinks: {
-    title: string;
-    to: string;
-  }[];
-  cardSoonLinks: {
-    title: string;
-  }[];
-};
+import type { SectionCardsData } from '../../types/sectionCards.ts';
+
+type SectionCardsPageProps = SectionCardsData;
 
 export const SectionCardsPage = ({
   documentTitle,
@@ -25,11 +18,11 @@ export const SectionCardsPage = ({
   return (
     <SectionCardListContainer>
       {cardLinks.map(({ title, to }) => (
-        <SectionCardLink title={title} to={to} />
+        <SectionCardLink key={title} title={title} to={to} />
       ))}
 
       {cardSoonLinks.map(({ title }) => (
-        <SectionCardLinkSoon title={title} />
+        <SectionCardLinkSoon key={title} title={title} />
       ))}
     </SectionCardListContainer>
   );

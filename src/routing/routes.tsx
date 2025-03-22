@@ -1,11 +1,17 @@
 import { LazyComponents, LazyPages } from './LazyModules.ts';
 
+import {
+  architectureSectionPageData,
+  homePageData,
+  reactSectionPageData,
+} from '../constants/sectionCards.ts';
+
 import type { RouteProps } from 'react-router';
 
 export const routes: RouteProps[] = [
   {
     index: true,
-    element: <LazyPages.home />,
+    element: <LazyPages.sectionCards {...homePageData} />,
   },
   {
     path: 'custom-theme',
@@ -13,7 +19,7 @@ export const routes: RouteProps[] = [
   },
   {
     path: 'react',
-    element: <LazyPages.reactSection />,
+    element: <LazyPages.sectionCards {...reactSectionPageData} />,
   },
   {
     path: 'react/:topic',
@@ -21,7 +27,7 @@ export const routes: RouteProps[] = [
   },
   {
     path: 'architecture',
-    element: <LazyPages.architectureSection />,
+    element: <LazyPages.sectionCards {...architectureSectionPageData} />,
   },
   {
     path: 'architecture/:topic',
