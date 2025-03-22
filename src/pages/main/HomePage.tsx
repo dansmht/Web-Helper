@@ -1,15 +1,14 @@
+import { SectionCardListContainer } from '../../components/SectionCardListContainer/SectionCardListContainer.tsx';
 import { SectionCardLink } from '../../components/SectionCardLink/SectionCardLink.tsx';
 import { SectionCardLinkSoon } from '../../components/SectionCardLink/SectionCardLinkSoon.tsx';
 
 export const HomePage = () => {
   return (
-    <>
-      <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
-        <SectionCardLink title="React" to="/react" />
-        <SectionCardLink title="Architecture" to="/architecture" />
-        <SectionCardLinkSoon title="JavaScript" />
-        <SectionCardLinkSoon title="TypeScript" />
-      </ul>
-    </>
+    <SectionCardListContainer>
+      <SectionCardLink title="React" to="/react" />
+      <SectionCardLink title="Architecture" to="/architecture" />
+      <SectionCardLinkSoon title="JavaScript" />
+      <SectionCardLinkSoon title="TypeScript" />
+    </SectionCardListContainer>
   );
 };
