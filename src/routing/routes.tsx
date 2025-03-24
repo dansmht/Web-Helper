@@ -1,36 +1,57 @@
-import { LazyComponents, LazyPages } from './LazyModules.ts';
+import { lazy } from 'react';
 
 import {
   architectureSectionPageData,
   homePageData,
   reactSectionPageData,
+  webSectionPageData,
 } from '../constants/sectionCards.ts';
 
 import type { RouteProps } from 'react-router';
 
+const SectionCardsPage = lazy(() =>
+  import('../pages/SectionCardsPage/SectionCardsPage.tsx').then((module) => ({
+    default: module.SectionCardsPage,
+  }))
+);
+
+const ThemePage = lazy(() =>
+  import('../pages/ThemePage/ThemePage.tsx').then((module) => ({
+    default: module.ThemePage,
+  }))
+);
+
+const MarkdownContentPage = lazy(() =>
+  import('../pages/MarkdownContentPage/MarkdownContentPage.tsx').then(
+    (module) => ({
+      default: module.MarkdownContentPage,
+    })
+  )
+);
+
 export const routes: RouteProps[] = [
   {
     index: true,
-    element: <LazyPages.sectionCards {...homePageData} />,
+    element: <SectionCardsPage {...homePageData} />,
   },
   {
     path: 'custom-theme',
-    element: <LazyPages.theme />,
+    element: <ThemePage />,
   },
   {
     path: 'react',
-    element: <LazyPages.sectionCards {...reactSectionPageData} />,
+    element: <SectionCardsPage {...reactSectionPageData} />,
   },
   {
-    path: 'react/:topic',
-    element: <LazyComponents.i18nMarkdownViewer section="react" />,
+    path: 'web',
+    element: <SectionCardsPage {...webSectionPageData} />,
   },
   {
     path: 'architecture',
-    element: <LazyPages.sectionCards {...architectureSectionPageData} />,
+    element: <SectionCardsPage {...architectureSectionPageData} />,
   },
   {
-    path: 'architecture/:topic',
-    element: <LazyComponents.i18nMarkdownViewer section="architecture" />,
+    path: ':section/:topic',
+    element: <MarkdownContentPage />,
   },
 ];

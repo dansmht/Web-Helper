@@ -14,14 +14,11 @@ import { isEfficientTheme } from '../../utils/themeUtils.ts';
 import type { Section } from '../../types/sharedTypes.ts';
 import { useScrollToHash } from '../../hooks/markdown/useScrollToHash.ts';
 
-type I18nMarkdownViewerProps = {
-  section: Section;
-};
-
-export const I18nMarkdownViewerWithAnchors = ({
-  section,
-}: I18nMarkdownViewerProps) => {
-  const { topic: fileName = '' } = useParams<{ topic: string }>();
+export const I18nMarkdownViewerWithAnchors = () => {
+  const { section = '' as Section, topic: fileName = '' } = useParams<{
+    section: Section;
+    topic: string;
+  }>();
   const { language } = useTranslation();
   const { theme } = useTheme();
   const systemTheme = useSystemTheme();

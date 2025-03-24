@@ -5,6 +5,7 @@ export const sharedTranslations: Record<Language, Translations> = {
     welcome: 'Welcome, {{firstName}} {{lastName}}!',
     soon: 'Soon',
     try_again: 'Try again',
+    back: 'Back',
     error: {
       something_went_wrong: 'Something went wrong',
     },
@@ -23,6 +24,7 @@ export const sharedTranslations: Record<Language, Translations> = {
     welcome: 'Добро пожаловать, {{firstName}} {{lastName}}!',
     soon: 'Скоро',
     try_again: 'Попробуйте снова',
+    back: 'Назад',
     error: {
       something_went_wrong: 'Что-то пошло не так',
     },
