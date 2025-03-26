@@ -1,17 +1,18 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
+import type { RefObject } from 'react';
 import type { AnchorLink } from '../../types/sharedTypes.ts';
 
-export const useMarkdownAnchors = (content: string | null) => {
-  const markdownContainerRef = useRef<HTMLDivElement | null>(null);
-
+export const useMarkdownAnchors = (
+  content: string | null,
+  containerRef: RefObject<HTMLDivElement | null>
+) => {
   const [anchors, setAnchors] = useState<AnchorLink[]>([]);
 
   useEffect(() => {
-    if (markdownContainerRef.current) {
+    if (containerRef.current) {
       const tempAnchors: AnchorLink[] = [];
-      const headings =
-        markdownContainerRef.current.querySelectorAll('h1, h2, h3');
+      const headings = containerRef.current.querySelectorAll('h1, h2, h3');
 
       headings.forEach((heading) => {
         const text = heading.textContent ?? '';
@@ -26,7 +27,7 @@ export const useMarkdownAnchors = (content: string | null) => {
 
       setAnchors(tempAnchors);
     }
-  }, [content]);
+  }, [content, containerRef.current]);
 
-  return { anchors, ref: markdownContainerRef };
+  return anchors;
 };
