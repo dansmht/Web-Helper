@@ -6,6 +6,7 @@ export const sharedTranslations: Record<Language, Translations> = {
     soon: 'Soon',
     try_again: 'Try again',
     back: 'Back',
+    go_back: 'Go back',
     error: {
       something_went_wrong: 'Something went wrong',
     },
@@ -25,6 +26,7 @@ export const sharedTranslations: Record<Language, Translations> = {
     soon: 'Скоро',
     try_again: 'Попробуйте снова',
     back: 'Назад',
+    go_back: 'Вернуться назад',
     error: {
       something_went_wrong: 'Что-то пошло не так',
     },
