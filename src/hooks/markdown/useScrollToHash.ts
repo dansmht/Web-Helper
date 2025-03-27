@@ -17,9 +17,9 @@ export const useScrollToHash = (
     if (isRendered) {
       const { hash } = window.location;
       if (hash) {
-        const anchorId = hash.replace('#', '');
+        const anchorId = decodeURI(hash.replace('#', ''));
         const targetElement = containerRef.current?.querySelector(
-          `#${anchorId}`
+          `#${CSS.escape(anchorId)}`
         );
 
         if (targetElement) {
