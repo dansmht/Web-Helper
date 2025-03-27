@@ -7,15 +7,13 @@ import { I18nProvider } from '../context/i18n/I18nContext';
 import type { PropsWithChildren, ReactElement } from 'react';
 import type { RenderOptions } from '@testing-library/react';
 
-const AllTheProviders = ({ children }: PropsWithChildren) => {
-  return (
-    <MemoryRouter>
-      <ThemeProvider>
-        <I18nProvider>{children}</I18nProvider>
-      </ThemeProvider>
-    </MemoryRouter>
-  );
-};
+const AllTheProviders = ({ children }: PropsWithChildren) => (
+  <MemoryRouter>
+    <ThemeProvider>
+      <I18nProvider>{children}</I18nProvider>
+    </ThemeProvider>
+  </MemoryRouter>
+);
 
 const customRender = (
   ui: ReactElement,
