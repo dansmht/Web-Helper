@@ -49,7 +49,7 @@ export const I18nMarkdownViewerWithAnchors = () => {
 
   return (
     <>
-      <AnchorList anchors={anchors} />
+      {anchors && <AnchorList anchors={anchors} />}
 
       <div ref={markdownContainerRef} className={wrapperClassName}>
         <ReactMarkdown
