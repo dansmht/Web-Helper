@@ -28,6 +28,7 @@ const config: Config = {
   },
 
   moduleNameMapper: {
+    '\\.svg\\?react$': '<rootDir>/src/__mocks__/svgrMock.ts',
     '^react-markdown$': '<rootDir>/src/__mocks__/ReactMarkdown.tsx',
     '^remark-gfm$': '<rootDir>/src/__mocks__/remarkGfm.ts',
     '^rehype-highlight$': '<rootDir>/src/__mocks__/rehypeHighlight.ts',
