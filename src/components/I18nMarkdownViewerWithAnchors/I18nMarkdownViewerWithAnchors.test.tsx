@@ -9,10 +9,6 @@ jest.mock('react-router', () => ({
   ...(jest.requireActual('react-router') as unknown as object),
   useParams: jest.fn(),
 }));
-// mock useSystemTheme to fix error
-jest.mock('../../hooks/theme/useSystemTheme.ts', () => ({
-  useSystemTheme: jest.fn(),
-}));
 jest.mock('../../hooks/markdown/useI18nMarkdownLoader.ts', () => ({
   useI18nMarkdownLoader: jest.fn(),
 }));

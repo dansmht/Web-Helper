@@ -12,10 +12,6 @@ jest.mock('../../context/i18n/I18nContext', () => ({
 jest.mock('../../hooks/useNavigateBack', () => ({
   useNavigateBack: jest.fn(),
 }));
-// mock useSystemTheme to fix error
-jest.mock('../../hooks/theme/useSystemTheme.ts', () => ({
-  useSystemTheme: jest.fn(),
-}));
 
 describe('BackButton Component', () => {
   const mockUseTranslation = useTranslation as jest.Mock;

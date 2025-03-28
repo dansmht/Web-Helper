@@ -15,3 +15,8 @@ Object.defineProperty(window, 'matchMedia', {
     dispatchEvent: jest.fn(),
   })),
 });
+
+// mock useSystemTheme to fix error
+jest.mock('./src/hooks/theme/useSystemTheme.ts', () => ({
+  useSystemTheme: jest.fn(),
+}));
