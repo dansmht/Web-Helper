@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 
 import type { KeyboardEvent as ReactKeyboardEvent, RefObject } from 'react';
 
@@ -15,8 +15,18 @@ export const useKeyboardNavigation = ({
   closeDropdown,
   handleOptionSelect,
 }: UseKeyboardNavigationProps) => {
-  const handleKeyDown = useCallback(
-    (event: KeyboardEvent) => {
+  const handleOptionKeyDown = useCallback(
+    (event: ReactKeyboardEvent<HTMLLIElement>, optionIndex: number) => {
+      if (event.key === ' ' || event.key === 'Enter') {
+        event.preventDefault();
+        handleOptionSelect(optionIndex);
+      }
+    },
+    [handleOptionSelect]
+  );
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         closeDropdown();
       } else if (isOpen && dropdownRef.current && event.key === 'Tab') {
@@ -42,19 +52,13 @@ export const useKeyboardNavigation = ({
           }
         }
       }
-    },
-    [isOpen, dropdownRef, closeDropdown]
-  );
+    };
 
-  const handleOptionKeyDown = useCallback(
-    (event: ReactKeyboardEvent<HTMLLIElement>, optionIndex: number) => {
-      if (event.key === ' ') {
-        event.preventDefault();
-        handleOptionSelect(optionIndex);
-      }
-    },
-    [handleOptionSelect]
-  );
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen, dropdownRef, closeDropdown]);
 
-  return { handleKeyDown, handleOptionKeyDown };
+  return handleOptionKeyDown;
 };

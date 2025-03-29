@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 
 import { useDropdown } from '../../hooks/dropdown/useDropdown.tsx';
 import { useKeyboardNavigation } from '../../hooks/dropdown/useKeyboardNavigation.tsx';
@@ -33,19 +33,12 @@ export const Dropdown = <T extends string = string>({
     [closeDropdown, onSelect, setSelected, buttonRef]
   );
 
-  const { handleKeyDown, handleOptionKeyDown } = useKeyboardNavigation({
+  const handleOptionKeyDown = useKeyboardNavigation({
     isOpen,
     dropdownRef,
     closeDropdown,
     handleOptionSelect: (index) => handleOptionSelect(options[index]),
   });
-
-  useEffect(() => {
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [handleKeyDown]);
 
   return (
     <div ref={dropdownRef} className="relative inline-block text-left">
