@@ -17,6 +17,7 @@ export const homePageData: SectionCardsData = {
     { title: 'JavaScript' },
     { title: 'TypeScript' },
   ],
+  disableFilter: true,
 };
 
 export const reactSectionPageData: SectionCardsData = {

@@ -4,4 +4,5 @@ export type SectionCardsData = {
     title: string;
     to?: string;
   }[];
+  disableFilter?: boolean;
 };

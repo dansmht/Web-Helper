@@ -14,6 +14,7 @@ type SectionCardsPageProps = SectionCardsData;
 export const SectionCardsPage = ({
   documentTitle,
   cards,
+  disableFilter,
 }: SectionCardsPageProps) => {
   useTitle(documentTitle);
 
@@ -31,18 +32,22 @@ export const SectionCardsPage = ({
     setFilter(e.target.value);
   };
 
+  const displayedCards = disableFilter ? cards : filteredCards;
+
   return (
     <>
-      <input
-        type="text"
-        placeholder="Search..."
-        value={filter}
-        onChange={onFilterChange}
-        className="border-ring mb-8 ml-auto block rounded-md p-2"
-      />
+      {!disableFilter && (
+        <input
+          type="text"
+          placeholder="Search..."
+          value={filter}
+          onChange={onFilterChange}
+          className="border-ring mb-8 ml-auto block rounded-md p-2"
+        />
+      )}
 
       <SectionCardListContainer>
-        {filteredCards.map(({ title, to }) =>
+        {displayedCards.map(({ title, to }) =>
           to ? (
             <SectionCardLink key={title} title={title} to={to} />
           ) : (
