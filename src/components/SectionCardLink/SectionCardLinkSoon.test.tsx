@@ -15,6 +15,11 @@ jest.mock('../../context/i18n/I18nContext.tsx', () => ({
   }),
 }));
 
+jest.mock('./_constants.ts', () => ({
+  linkClassName: 'link-class',
+  linkWrapperClassName: 'link-wrapper-class',
+}));
+
 describe('SectionCardLinkSoon', () => {
   it('renders the component without errors', () => {
     render(<SectionCardLinkSoon title="Test Title" />);
@@ -33,25 +38,17 @@ describe('SectionCardLinkSoon', () => {
     const { container } = render(<SectionCardLinkSoon title="Test Title" />);
 
     const listItem = container.firstChild as HTMLElement;
-    expect(listItem).toHaveClass(
-      'ring-text-secondary',
-      'ring-2',
-      'bg-bg-primary',
-      'text-text-secondary',
-      'h-36',
-      'rounded-lg',
-      'transition-smooth'
-    );
+    expect(listItem).toHaveClass('link-wrapper-class');
 
     const span = screen.getByText(/Test Title/i).closest('span');
     expect(span).toHaveClass(
+      'link-class',
+      'ring-text-secondary',
+      'focus-within:ring-accent',
       'cursor-default',
-      'flex',
-      'h-full',
-      'w-full',
-      'items-center',
-      'justify-center',
-      'text-2xl'
+      'border-none',
+      'ring-2',
+      'outline-none'
     );
   });
 

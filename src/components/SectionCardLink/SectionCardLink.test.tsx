@@ -17,6 +17,11 @@ jest.mock('react-router', () => ({
   ),
 }));
 
+jest.mock('./_constants.ts', () => ({
+  linkClassName: 'link-class',
+  linkWrapperClassName: 'link-wrapper-class',
+}));
+
 describe('SectionCardLink', () => {
   const linkProps = {
     title: 'Test Title',
@@ -42,25 +47,10 @@ describe('SectionCardLink', () => {
     const { container } = render(<SectionCardLink {...linkProps} />);
 
     const listItem = container.firstChild as HTMLElement;
-    expect(listItem).toHaveClass(
-      'border-ring',
-      'hover:text-accent',
-      'bg-bg-primary',
-      'text-text-secondary',
-      'h-36',
-      'rounded-lg',
-      'transition-smooth'
-    );
+    expect(listItem).toHaveClass('link-wrapper-class');
 
     const link = screen.getByTestId('mock-link');
-    expect(link).toHaveClass(
-      'flex',
-      'h-full',
-      'w-full',
-      'items-center',
-      'justify-center',
-      'text-2xl'
-    );
+    expect(link).toHaveClass('link-class', 'border-ring', 'hover:text-accent');
   });
 
   it('passes additional props to the link', () => {
