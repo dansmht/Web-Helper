@@ -60,7 +60,7 @@ describe('LanguageDropdown', () => {
     render(<LanguageDropdown />);
 
     const options = screen.getAllByRole('button', { name: /svg/i });
-    expect(options.length).toBeGreaterThan(0);
+    expect(options.length).toBe(2);
 
     expect(screen.getByTestId('option-ru')).toBeInTheDocument();
     expect(screen.getByTestId('option-en')).toBeInTheDocument();
