@@ -10,30 +10,29 @@ import type { SectionCardsData } from '../types/sectionCards.ts';
  */
 export const homePageData: SectionCardsData = {
   documentTitle: 'Web Helper',
-  cardLinks: [
+  cards: [
     { title: 'React', to: '/react' },
     { title: 'Web', to: '/web' },
     { title: 'Architecture', to: '/architecture' },
+    { title: 'JavaScript' },
+    { title: 'TypeScript' },
   ],
-  cardSoonLinks: [{ title: 'JavaScript' }, { title: 'TypeScript' }],
 };
 
-export const reactSectionPageData = {
+export const reactSectionPageData: SectionCardsData = {
   documentTitle: 'React - Web Helper',
-  cardLinks: [{ title: 'Virtual Dom', to: '/react/virtual-dom' }],
-  cardSoonLinks: [],
+  cards: [{ title: 'Virtual Dom', to: '/react/virtual-dom' }],
 };
 
-export const webSectionPageData = {
+export const webSectionPageData: SectionCardsData = {
   documentTitle: 'Web - Web Helper',
-  cardLinks: [
+  cards: [
     { title: 'Web page loading process', to: '/web/web-page-loading-process' },
+    { title: 'CORS' },
   ],
-  cardSoonLinks: [{ title: 'CORS' }],
 };
 
-export const architectureSectionPageData = {
+export const architectureSectionPageData: SectionCardsData = {
   documentTitle: 'Architecture - Web Helper',
-  cardLinks: [{ title: 'FSD', to: '/architecture/fsd' }],
-  cardSoonLinks: [],
+  cards: [{ title: 'FSD', to: '/architecture/fsd' }],
 };

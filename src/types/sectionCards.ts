@@ -1,10 +1,7 @@
 export type SectionCardsData = {
   documentTitle: string;
-  cardLinks: {
+  cards: {
     title: string;
-    to: string;
-  }[];
-  cardSoonLinks: {
-    title: string;
+    to?: string;
   }[];
 };
