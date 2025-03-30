@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 
+import { cn } from '../../utils/classnames.ts';
 import { linkClassName, linkWrapperClassName } from './_constants.ts';
 
 import type { LinkProps } from 'react-router';
@@ -10,8 +11,11 @@ type SectionCardLinkProps = Omit<LinkProps, 'children'> & {
 
 export const SectionCardLink = ({ title, ...rest }: SectionCardLinkProps) => {
   return (
-    <li className={`${linkWrapperClassName} border-ring hover:text-accent`}>
-      <Link className={linkClassName} {...rest}>
+    <li className={linkWrapperClassName}>
+      <Link
+        className={cn(linkClassName, 'border-ring hover:text-accent')}
+        {...rest}
+      >
         {title}
       </Link>
     </li>
