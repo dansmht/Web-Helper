@@ -2,6 +2,7 @@ import { SectionCardListContainer } from '../../components/SectionCardListContai
 import { SectionCardLink } from '../../components/SectionCardLink/SectionCardLink.tsx';
 import { SectionCardLinkSoon } from '../../components/SectionCardLink/SectionCardLinkSoon.tsx';
 
+import { useTranslation } from '../../context/i18n/I18nContext.tsx';
 import { useTitle } from '../../hooks/useTitle.ts';
 import { useDebouncedQueryFilter } from '../../hooks/useDebouncedQueryFilter.ts';
 import { filterByTitle } from './_utils.ts';
@@ -16,6 +17,8 @@ export const SectionCardsPage = ({
   cards,
   disableFilter,
 }: SectionCardsPageProps) => {
+  const { t } = useTranslation();
+
   useTitle(documentTitle);
 
   const {
@@ -39,7 +42,7 @@ export const SectionCardsPage = ({
       {!disableFilter && (
         <input
           type="text"
-          placeholder="Search..."
+          placeholder={`${t('search')}...`}
           value={filter}
           onChange={onFilterChange}
           className="border-ring mb-8 ml-auto block rounded-md p-2"
