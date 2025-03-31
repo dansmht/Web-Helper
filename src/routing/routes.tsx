@@ -1,11 +1,6 @@
 import { lazy } from 'react';
 
-import {
-  architectureSectionPageData,
-  homePageData,
-  reactSectionPageData,
-  webSectionPageData,
-} from '../constants/sectionCards.ts';
+import { sectionPagesData } from '../constants/sectionCards.ts';
 
 import type { RouteProps } from 'react-router';
 
@@ -32,7 +27,7 @@ const MarkdownContentPage = lazy(() =>
 export const routes: RouteProps[] = [
   {
     index: true,
-    element: <SectionCardsPage {...homePageData} />,
+    element: <SectionCardsPage {...sectionPagesData.index} />,
   },
   {
     path: 'custom-theme',
@@ -40,15 +35,15 @@ export const routes: RouteProps[] = [
   },
   {
     path: 'react',
-    element: <SectionCardsPage {...reactSectionPageData} />,
+    element: <SectionCardsPage {...sectionPagesData.react} />,
   },
   {
     path: 'web',
-    element: <SectionCardsPage {...webSectionPageData} />,
+    element: <SectionCardsPage {...sectionPagesData.web} />,
   },
   {
     path: 'architecture',
-    element: <SectionCardsPage {...architectureSectionPageData} />,
+    element: <SectionCardsPage {...sectionPagesData.architecture} />,
   },
   {
     path: ':section/:topic',

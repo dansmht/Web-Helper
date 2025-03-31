@@ -1,4 +1,11 @@
-export type Section = 'react' | 'typescript' | 'javascript' | 'architecture';
+export type Section =
+  | 'react'
+  | 'typescript'
+  | 'javascript'
+  | 'architecture'
+  | 'web';
+
+export type PageIdentifier = Section | 'index';
 
 export type AnchorLink = {
   id: string;
