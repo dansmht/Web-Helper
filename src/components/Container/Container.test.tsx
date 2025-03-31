@@ -12,7 +12,7 @@ describe('Container', () => {
     render(<Container>Test Content</Container>);
 
     expect(screen.getByText('Test Content')).toHaveClass(
-      'mx-auto max-w-7xl px-4 sm:min-w-50 sm:px-6 lg:px-8'
+      'mx-auto max-w-7xl px-4 pb-12 sm:min-w-50 sm:px-6 lg:px-8'
     );
   });
 
