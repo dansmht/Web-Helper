@@ -10,7 +10,7 @@ export const Header = () => {
         <h1 className="text-2xl font-semibold select-none">Web Helper</h1>
       </Link>
 
-      <div className="flex items-center gap-8">
+      <div className="flex items-center gap-4 md:gap-6 lg:gap-8">
         <LanguageDropdown />
         <ThemeDropdown />
       </div>

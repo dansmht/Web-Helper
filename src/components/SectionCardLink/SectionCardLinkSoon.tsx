@@ -14,8 +14,8 @@ export const SectionCardLinkSoon = ({ title }: SectionCardLinkSoonProps) => {
       <span
         tabIndex={0}
         className={cn(
-          linkClassName,
-          'ring-text-secondary focus-within:ring-accent cursor-default border-none ring-2 outline-none'
+          'ring-text-secondary focus-within:ring-accent cursor-default border-none ring-2 outline-none',
+          linkClassName
         )}
       >
         {title} ({t('soon')})

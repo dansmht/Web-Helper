@@ -13,7 +13,7 @@ export const SectionCardLink = ({ title, ...rest }: SectionCardLinkProps) => {
   return (
     <li className={linkWrapperClassName}>
       <Link
-        className={cn(linkClassName, 'border-ring hover:text-accent')}
+        className={cn('border-ring hover:text-accent', linkClassName)}
         {...rest}
       >
         {title}
