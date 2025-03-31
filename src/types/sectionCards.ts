@@ -1,8 +1,10 @@
+export type SectionCard = {
+  title: string;
+  to?: string;
+};
+
 export type SectionCardsData = {
   documentTitle: string;
-  cards: {
-    title: string;
-    to?: string;
-  }[];
+  cards: SectionCard[];
   disableFilter?: boolean;
 };
