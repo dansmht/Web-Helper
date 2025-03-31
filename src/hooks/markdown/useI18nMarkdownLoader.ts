@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 
+import { useTranslation } from '../../context/i18n/I18nContext.tsx';
+
+import type { TFunction } from '../../types/i18n.ts';
 import type {
   I18nMarkdownLoaderParams,
   MarkdownLoaderState,
@@ -15,7 +18,8 @@ const cache = new Map<string, string>();
 
 const fetchMarkdownContent = async (
   { section, fileName, language }: I18nMarkdownLoaderParams,
-  signal: AbortSignal
+  signal: AbortSignal,
+  t: TFunction
 ): Promise<string> => {
   const cacheKey = `${language}/${section}/${fileName}`;
 
@@ -26,7 +30,11 @@ const fetchMarkdownContent = async (
   const response = await fetch(`/markdown/${cacheKey}.md`, { signal });
 
   if (!response.ok) {
-    throw new Error(`Failed to load [${section}] ${fileName} (${language})`);
+    const errorMessage = t('error.failed_to_load_markdown', {
+      section,
+      fileName,
+    });
+    throw new Error(errorMessage);
   }
 
   const text = await response.text();
@@ -40,6 +48,8 @@ export const useI18nMarkdownLoader = ({
   fileName,
   language,
 }: I18nMarkdownLoaderParams): MarkdownLoaderState => {
+  const { t } = useTranslation();
+
   const [state, setState] = useState<MarkdownLoaderState>(INITIAL_STATE);
 
   useEffect(() => {
@@ -54,17 +64,15 @@ export const useI18nMarkdownLoader = ({
       try {
         const content = await fetchMarkdownContent(
           { section, fileName, language },
-          signal
+          signal,
+          t
         );
         setState({ content, error: null, isLoading: false });
       } catch (error) {
         if (signal.aborted) return;
         setState({
           content: null,
-          error:
-            error instanceof Error
-              ? error.message
-              : 'An unknown error occurred.',
+          error: error instanceof Error ? error.message : t('error.unknown'),
           isLoading: false,
         });
       }
@@ -75,7 +83,7 @@ export const useI18nMarkdownLoader = ({
     return () => {
       controller.abort();
     };
-  }, [fileName, language, section]);
+  }, [fileName, language, section, t]);
 
   return state;
 };

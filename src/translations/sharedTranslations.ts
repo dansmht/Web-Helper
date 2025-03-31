@@ -10,6 +10,8 @@ export const sharedTranslations: Record<Language, Translations> = {
     search: 'Search',
     error: {
       something_went_wrong: 'Something went wrong',
+      failed_to_load_markdown: 'Failed to load [{{section}}] {{fileName}} (en)',
+      unknown: 'An unknown error occurred',
     },
     language: {
       en: 'English',
@@ -31,6 +33,9 @@ export const sharedTranslations: Record<Language, Translations> = {
     search: 'Поиск',
     error: {
       something_went_wrong: 'Что-то пошло не так',
+      failed_to_load_markdown:
+        'Не удалось загрузить [{{section}}] {{fileName}} (ру)',
+      unknown: 'Произошла неизвестная ошибка',
     },
     language: {
       en: 'English',
