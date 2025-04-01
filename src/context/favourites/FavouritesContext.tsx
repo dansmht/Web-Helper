@@ -1,20 +1,22 @@
 import { createContext, useContext, useState } from 'react';
 
-import { getSavedFavourites } from '../../utils/favouritesUtils.ts';
-import { LocalStorageKeys } from '../../constants/localStorageKeys.ts';
-
 import type {
   Favourites,
   FavouritesContextProps,
+  FavouritesProviderProps,
 } from '../../types/favouritesTypes.ts';
-import type { PropsWithChildren } from 'react';
 
 const FavouritesContext = createContext<FavouritesContextProps | undefined>(
   undefined
 );
 
-export const FavouritesProvider = ({ children }: PropsWithChildren) => {
-  const [favourites, setFavourites] = useState<Favourites>(getSavedFavourites);
+export const FavouritesProvider = ({
+  storage,
+  children,
+}: FavouritesProviderProps) => {
+  const [favourites, setFavourites] = useState<Favourites>(
+    storage.getFavourites
+  );
 
   const toggleFavourite = (id: string) => {
     setFavourites((prev) => {
@@ -22,10 +24,7 @@ export const FavouritesProvider = ({ children }: PropsWithChildren) => {
         ? prev.filter((favId) => favId !== id)
         : [...prev, id];
 
-      localStorage.setItem(
-        LocalStorageKeys.FAVOURITES,
-        JSON.stringify(newFavourites)
-      );
+      storage.saveFavourites(newFavourites);
       return newFavourites;
     });
   };
