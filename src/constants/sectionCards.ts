@@ -12,18 +12,18 @@ import type { PageIdentifier } from '../types/sharedTypes.ts';
 const homePageData: SectionCardsData = {
   documentTitle: 'Web Helper',
   cards: [
-    { title: 'React', to: '/react' },
-    { title: 'Web', to: '/web' },
-    { title: 'Architecture', to: '/architecture' },
-    { title: 'JavaScript' },
-    { title: 'TypeScript' },
+    { id: 'react', title: 'React', to: '/react' },
+    { id: 'web', title: 'Web', to: '/web' },
+    { id: 'architecture', title: 'Architecture', to: '/architecture' },
+    { id: 'javascript', title: 'JavaScript' },
+    { id: 'typescript', title: 'TypeScript' },
   ],
   disableFilter: true,
 };
 
 const reactPageData: SectionCardsData = {
   documentTitle: 'React - Web Helper',
-  cards: [{ title: 'Virtual Dom', to: '/react/virtual-dom' }],
+  cards: [{ id: '', title: 'Virtual Dom', to: '/react/virtual-dom' }],
 };
 
 const typescriptPageData: SectionCardsData = {
@@ -39,17 +39,17 @@ const javascriptPageData: SectionCardsData = {
 const webPageData: SectionCardsData = {
   documentTitle: 'Web - Web Helper',
   cards: [
-    { title: 'Web page loading process', to: '/web/web-page-loading-process' },
-    { title: 'CORS' },
+    { id: 'web-page-loading-process', title: 'Web page loading process', to: '/web/web-page-loading-process' },
+    { id: 'cors', title: 'CORS' },
   ],
 };
 
 const architecturePageData: SectionCardsData = {
   documentTitle: 'Architecture - Web Helper',
   cards: [
-    { title: 'FSD', to: '/architecture/fsd' },
-    { title: 'FSD1', to: '/architecture/fsd1' },
-    { title: 'FSD2', to: '/architecture/fsd2' },
+    { id: 'fsd', title: 'FSD', to: '/architecture/fsd' },
+    { id: 'fsd-1', title: 'FSD1', to: '/architecture/fsd1' },
+    { id: 'fsd-2', title: 'FSD2', to: '/architecture/fsd2' },
   ],
 };
 

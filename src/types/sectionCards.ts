@@ -1,4 +1,5 @@
 export type SectionCard = {
+  id: string;
   title: string;
   to?: string;
 };

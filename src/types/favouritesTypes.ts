@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react';
 
-export type Favourites = string[];
+export type Favourites = Record<string, Record<string, boolean>>;
 
 export type FavouritesStorage = {
   getFavourites: () => Favourites;

@@ -1,5 +1,12 @@
 export function createLocalStorageStore<T>(key: string, initialState: T) {
-  let state = initialState;
+  let state: T;
+  try {
+    const storedData = localStorage.getItem(key);
+    state = storedData ? JSON.parse(storedData) as T : initialState;
+  } catch (error) {
+    console.warn(`Error reading from localStorage for key "${key}":`, error);
+    state = initialState;
+  }
 
   const listeners: (() => void)[] = [];
 

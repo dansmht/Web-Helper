@@ -4,7 +4,9 @@ import { SectionCardLinkSoon } from '../../components/SectionCardLink/SectionCar
 
 import { useTranslation } from '../../context/i18n/I18nContext.tsx';
 import { useTitle } from '../../hooks/useTitle.ts';
+import { useFavouritesStore } from '../../hooks/store/useFavouritesStore.ts';
 import { useDebouncedQueryFilter } from '../../hooks/useDebouncedQueryFilter.ts';
+import { sortCardsByFavourites } from '../../utils/sortCardsByFavourites.ts';
 import { filterByTitle } from './_utils.ts';
 
 import type { ChangeEvent } from 'react';
@@ -18,6 +20,8 @@ export const SectionCardsPage = ({
   disableFilter,
 }: SectionCardsPageProps) => {
   const { t } = useTranslation();
+
+  const favourites = useFavouritesStore((state) => state.favourites);
 
   useTitle(documentTitle);
 
@@ -36,6 +40,7 @@ export const SectionCardsPage = ({
   };
 
   const displayedCards = disableFilter ? cards : filteredCards;
+  const sortedCards = sortCardsByFavourites(displayedCards, favourites, documentTitle);
 
   return (
     <>
@@ -50,9 +55,9 @@ export const SectionCardsPage = ({
       )}
 
       <SectionCardListContainer>
-        {displayedCards.map(({ title, to }) =>
+        {sortedCards.map(({ id, title, to }) =>
           to ? (
-            <SectionCardLink key={title} title={title} to={to} />
+            <SectionCardLink key={id} id={id} title={title} to={to} sectionKey={documentTitle} />
           ) : (
             <SectionCardLinkSoon key={title} title={title} />
           )

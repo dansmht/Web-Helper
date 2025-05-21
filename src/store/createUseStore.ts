@@ -3,14 +3,15 @@ import { useState, useEffect } from 'react';
 import type { Store } from '../types/storeTypes.ts';
 
 export const createUseStore = <T>(store: Store<T>) => {
-  return <S>(selector: (state: T) => S): S => {
+  return <S = T>(selector?: (state: T) => S): S => {
     const [selectedState, setSelectedState] = useState(
-      selector(store.getState())
+      selector ? selector(store.getState()) : (store.getState() as unknown as S)
     );
 
     useEffect(() => {
       const callback = () => {
-        const nextState = selector(store.getState());
+        const nextState = selector ? selector(store.getState()) : (store.getState() as unknown as S);
+
         setSelectedState((prevState) =>
           Object.is(prevState, nextState) ? prevState : nextState
         );
