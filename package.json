@@ -16,6 +16,7 @@
     "@tailwindcss/vite": "^4.0.6",
     "clsx": "^2.1.1",
     "highlight.js": "^11.11.1",
+    "immer": "^10.1.1",
     "jest-environment-jsdom": "^29.7.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -25,7 +26,8 @@
     "rehype-highlight": "^7.0.2",
     "remark-gfm": "^4.0.1",
     "tailwind-merge": "^3.0.2",
-    "tailwindcss": "^4.0.6"
+    "tailwindcss": "^4.0.6",
+    "zustand": "^5.0.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
