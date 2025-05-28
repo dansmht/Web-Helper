@@ -7,7 +7,7 @@ import type { Favourites } from '../types/favouritesTypes.ts';
 
 type FavouritesStore = {
   favourites: Favourites;
-  toggleFavourite: (section: string, topic: string) => void;
+  toggleFavourite: (topicId: string) => void;
 };
 
 const favouritesStoreMiddlewares = (
@@ -28,24 +28,13 @@ export const useFavouritesStore = create<FavouritesStore>()(
   favouritesStoreMiddlewares((set) => ({
     favourites: {},
 
-    toggleFavourite: (section, topic) =>
+    toggleFavourite: (topicId) =>
       set(
         (state) => {
-          if (!state.favourites[section]) {
-            state.favourites[section] = {};
-          }
-
-          if (state.favourites[section][topic]) {
-            delete state.favourites[section][topic];
+          if (state.favourites[topicId]) {
+            delete state.favourites[topicId];
           } else {
-            state.favourites[section][topic] = true;
-          }
-
-          if (
-            state.favourites[section] &&
-            Object.keys(state.favourites[section]).length === 0
-          ) {
-            delete state.favourites[section];
+            state.favourites[topicId] = true;
           }
         },
         false,
@@ -53,3 +42,12 @@ export const useFavouritesStore = create<FavouritesStore>()(
       ),
   }))
 );
+
+export const selectFavourites = (state: FavouritesStore) => state.favourites;
+
+export const selectIsFavourite =
+  (topicId: string) => (state: FavouritesStore) =>
+    state.favourites[topicId] ?? false;
+
+export const selectToggleFavourite = (state: FavouritesStore) =>
+  state.toggleFavourite;

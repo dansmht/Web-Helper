@@ -17,6 +17,14 @@ jest.mock('react-router', () => ({
   ),
 }));
 
+jest.mock('./FavouriteButton.tsx', () => ({
+  FavouriteButton: ({ id }: { id: string }) => (
+    <button data-testid="favourite-button" data-id={id}>
+      Favourite
+    </button>
+  ),
+}));
+
 jest.mock('./_constants.ts', () => ({
   linkClassName: 'link-class',
   linkWrapperClassName: 'link-wrapper-class',
@@ -26,6 +34,7 @@ describe('SectionCardLink', () => {
   const linkProps = {
     title: 'Test Title',
     to: '/test-url',
+    id: 'test-id',
   };
 
   it('renders the link with the correct title', () => {
@@ -60,5 +69,13 @@ describe('SectionCardLink', () => {
       'data-custom',
       'custom-attribute'
     );
+  });
+
+  it('renders the FavouriteButton component with the correct id', () => {
+    render(<SectionCardLink {...linkProps} />);
+
+    const favouriteButton = screen.getByTestId('favourite-button');
+    expect(favouriteButton).toBeInTheDocument();
+    expect(favouriteButton).toHaveAttribute('data-id', 'test-id');
   });
 });

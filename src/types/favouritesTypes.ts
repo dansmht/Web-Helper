@@ -1,1 +1,1 @@
-export type Favourites = Record<string, Record<string, boolean>>;
+export type Favourites = Record<string, boolean>;

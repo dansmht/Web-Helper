@@ -3,7 +3,10 @@ import { SectionCardLink } from '../../components/SectionCardLink/SectionCardLin
 import { SectionCardLinkSoon } from '../../components/SectionCardLink/SectionCardLinkSoon.tsx';
 
 import { useTranslation } from '../../context/i18n/I18nContext.tsx';
-import { useFavouritesStore } from '../../store/favouritesStore.ts';
+import {
+  selectFavourites,
+  useFavouritesStore,
+} from '../../store/favouritesStore.ts';
 import { useTitle } from '../../hooks/useTitle.ts';
 import { useDebouncedQueryFilter } from '../../hooks/useDebouncedQueryFilter.ts';
 import { sortCardsByFavourites } from '../../utils/sortCardsByFavourites.ts';
@@ -20,7 +23,7 @@ export const SectionCardsPage = ({
   disableFilter,
 }: SectionCardsPageProps) => {
   const { t } = useTranslation();
-  const favourites = useFavouritesStore((state) => state.favourites);
+  const favourites = useFavouritesStore(selectFavourites);
 
   useTitle(documentTitle);
 
@@ -39,11 +42,7 @@ export const SectionCardsPage = ({
   };
 
   const displayedCards = disableFilter ? cards : filteredCards;
-  const sortedCards = sortCardsByFavourites(
-    displayedCards,
-    favourites,
-    documentTitle
-  );
+  const sortedCards = sortCardsByFavourites(displayedCards, favourites);
 
   return (
     <>
@@ -60,13 +59,7 @@ export const SectionCardsPage = ({
       <SectionCardListContainer>
         {sortedCards.map(({ id, title, to }) =>
           to ? (
-            <SectionCardLink
-              key={id}
-              id={id}
-              title={title}
-              to={to}
-              sectionKey={documentTitle}
-            />
+            <SectionCardLink key={id} id={id} title={title} to={to} />
           ) : (
             <SectionCardLinkSoon key={title} title={title} />
           )
